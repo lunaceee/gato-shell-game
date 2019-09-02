@@ -1,0 +1,14 @@
+<svg
+  class="gato-eye-right"
+  viewBox="0 0 240 240"
+  xmlns="http://www.w3.org/2000/svg"
+  fill-rule="evenodd"
+  clip-rule="evenodd"
+  stroke-linejoin="round"
+  stroke-miterlimit="2"
+>
+  <path
+    d="M17.835.004C8.448-.091-.03 2.9-.003 17.407c.009 6.312 6.337 11.356 13.35 12.102 5.953.63 12.729-.81 17.429-5.416C37.142 17.853 34.752.879 34.752.879S32.997.316 27.231.22C26.038.198 21.326.037 17.835.004z"
+    fill="#31323d"
+  />
+</svg>

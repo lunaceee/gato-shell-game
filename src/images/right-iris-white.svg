@@ -1,0 +1,18 @@
+<svg
+  class="right-iris-white"
+  viewBox="0 0 200 200"
+  xmlns="http://www.w3.org/2000/svg"
+  fill-rule="evenodd"
+  clip-rule="evenodd"
+  stroke-linejoin="round"
+  stroke-miterlimit="2"
+>
+  <path
+    d="M4.254.725C1.794.785-.05.89.004 3.195.06 5.497 2.1 7.32 4.563 7.26c2.46-.06 4.414-1.978 4.36-4.282C8.867.675 6.715.666 4.254.725z"
+    fill="#fff"
+  />
+  <path
+    d="M11.852.01C10.665.067 9.9.314 9.957 1.58c.056 1.266 1.066 2.246 2.254 2.188 1.188-.057 2.106-1.13 2.049-2.396C14.203.106 13.04-.048 11.852.01z"
+    fill="#fff"
+  />
+</svg>

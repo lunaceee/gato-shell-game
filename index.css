@@ -1,0 +1,21 @@
+html,
+body {
+  margin: 0;
+  background-color: rebeccapurple;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.gato {
+  width: 30rem;
+  height: 30rem;
+  position: relative;
+  border: 1px solid black;
+}
+
+.gato > img {
+  position: absolute;
+}
