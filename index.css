@@ -1,7 +1,16 @@
 html,
 body {
   margin: 0;
-  background-color: rebeccapurple;
+}
+
+h1 {
+  color: red;
+  text-align: center;
+}
+
+.status {
+  text-align: center;
+  font-size: 2rem;
 }
 
 .main {
@@ -18,4 +27,28 @@ body {
 
 .gato > img {
   position: absolute;
+}
+
+.shells {
+  position: relative;
+  border: 2px solid red;
+  width: 30rem;
+  height: 20rem;
+}
+
+.shells > img {
+  position: absolute;
+  border: 1px solid green;
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+.shell {
+  list-style: none;
+}
+
+.start-button {
+  color: red;
+  font-size: 2rem;
+  font-weight: bold;
 }
