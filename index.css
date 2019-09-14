@@ -9,6 +9,7 @@ h1 {
 }
 
 .status {
+  height: 6rem;
   text-align: center;
   font-size: 2rem;
 }
@@ -20,9 +21,12 @@ h1 {
 
 .gato {
   width: 30rem;
-  height: 30rem;
+  height: 33rem;
   position: relative;
-  border: 1px solid black;
+}
+
+.center {
+  margin: auto;
 }
 
 .gato > img {
@@ -30,25 +34,38 @@ h1 {
 }
 
 .shells {
+  display: block;
   position: relative;
-  border: 2px solid red;
   width: 30rem;
-  height: 20rem;
+  height: 10rem;
 }
 
 .shells > img {
   position: absolute;
-  border: 1px solid green;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .shell {
   list-style: none;
 }
 
+.button-group {
+  display: flex;
+  height: 6rem;
+  justify-content: center;
+}
+
 .start-button {
-  color: red;
+  z-index: 100;
   font-size: 2rem;
   font-weight: bold;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.sprite {
+  transform-origin: top left;
 }

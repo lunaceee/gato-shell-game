@@ -5,10 +5,30 @@
     constructor(cssSelector, p0) {
       this.cssSelector = cssSelector;
       this.element = document.querySelector(cssSelector);
+      this.element.classList.add("sprite");
       this.p0 = p0;
 
       // Move to the initial position.
       this.move(this.p0);
+    }
+
+    rotate(radians) {
+      this.element.style.transform = `rotate(${radians}rad)`;
+    }
+
+    hide() {
+      this.element.classList.add("hide");
+    }
+
+    show() {
+      this.element.classList.remove("hide");
+    }
+    isVisible() {
+      return !new Set(this.element.classList).has("hide");
+    }
+    toggle() {
+      if (this.isVisible()) this.hide();
+      else this.show();
     }
 
     move(pos) {
@@ -18,13 +38,13 @@
   }
 
   const input = {
-    startPressed: false
+    onStart: false
   };
 
-  const shellParts = getSelectors({
-    shellOpen: ".shell-open",
-    treat: ".treat"
-  });
+  // const shellVariations = getSelectors({
+  //   shellOpen: ".shell-open",
+  //   treat: ".treat"
+  // });
 
   const state = {
     shells: [
@@ -32,6 +52,7 @@
       new Sprite(".shell-2", new Point(10, 0.25)),
       new Sprite(".shell-3", new Point(20, 0.25))
     ],
+    tailDt: -1,
     lastBranch: "",
     shufflingTime: 0,
     eyeX: -1,
@@ -42,19 +63,8 @@
 
   const startButton = document.querySelector(".start-button");
   startButton.addEventListener("click", ev => {
-    input.startPressed = true;
+    input.onStart = true;
   });
-
-  /**
-   * Returns an object of the DOM elements of the gato.
-   */
-  function getSelectors(parts) {
-    let gatoBodyParts = {};
-    for (const [name, selector] of Object.entries(parts)) {
-      gatoBodyParts[name] = document.querySelector(selector);
-    }
-    return gatoBodyParts;
-  }
 
   /**
    * Prompt messages for different states.
@@ -66,31 +76,21 @@
 
   message("start!");
 
-  const gato = getSelectors({
-    body: ".gato-body",
-    eyeFrame: ".gato-eye-frame",
-    eyeLeft: ".gato-eye-left",
-    eyeRight: ".gato-eye-right",
-    eyeWhiteLeft: ".gato-eye-white-left",
-    eyeWhiteRight: ".gato-eye-white-right",
-    eyeBg: ".gato-eye-background"
-  });
+  const gato = {
+    body: new Sprite(".gato-body", new Point(0, 0)),
+    noseMouth: new Sprite(".gato-nose-mouth", new Point(10.2, 12)),
+    mushtache: new Sprite(".gato-mustache", new Point(-2, 12)),
+    tailUp: new Sprite(".gato-tail-up", new Point(14, 14)),
+    legsDefault: new Sprite(".gato-legs-default", new Point(6.5, 21.5)),
+    eyeFrame: new Sprite(".gato-eye-frame", new Point(3, 5)),
+    eyeLeft: new Sprite(".gato-eye-left", new Point(6.6, 6.6)),
+    eyeRight: new Sprite(".gato-eye-right", new Point(13.8, 6.6)),
+    eyeWhiteLeft: new Sprite(".gato-eye-white-left", new Point(7, 7.5)),
+    eyeWhiteRight: new Sprite(".gato-eye-white-right", new Point(15.5, 7.5)),
+    eyeBg: new Sprite(".gato-eye-background", new Point(4, 6))
+  };
 
-  function move(element, x, y) {
-    element.style.top = y + "rem";
-    element.style.left = x + "rem";
-  }
-
-  function initGato() {
-    move(gato.eyeLeft, 5.6 + 1, 6.6);
-    move(gato.eyeRight, 13.8, 6.6);
-    move(gato.eyeFrame, 3, 5);
-    move(gato.eyeBg, 4, 6);
-    move(gato.eyeWhiteLeft, 7, 7.5);
-    move(gato.eyeWhiteRight, 15.5, 7.5);
-  }
-
-  initGato();
+  // gato.tailUp.hide();
 
   // helper function to position different parts of the gato body
   //   document.body.addEventListener('mousemove', e => {
@@ -100,12 +100,19 @@
   //     move(gatoEyeRight, x, y);
   //   });
 
-  function updateCatEyes(dt) {
+  function updateGato(dt) {
     state.eyeX = state.eyeX + (2 * dt) / 1000;
     if (state.eyeX > 1) state.eyeX = -1;
     let k = Math.abs(state.eyeX);
-    move(gato.eyeLeft, 5.6 + k, 6.6);
-    move(gato.eyeRight, 13.8 + k, 6.6);
+    gato.eyeLeft.move(new Point(5.6 + k, 6.6));
+    gato.eyeRight.move(new Point(13.8 + k, 6.6));
+
+    state.tailDt = state.tailDt + dt / 1000;
+    if (state.tailDt > 1) {
+      state.tailDt = -1;
+    }
+    let k2 = Math.abs(state.tailDt);
+    gato.tailUp.rotate(-0.7 + 1 * k2 * k2); // TODO: make cat tail movement more natural
   }
 
   function orbit(center, radius, radians) {
@@ -164,12 +171,12 @@
   }
 
   function commonUpdates(dt) {
-    updateCatEyes(dt);
+    updateGato(dt);
   }
 
   function stateIdle(dt) {
-    if (input.startPressed) {
-      input.startPressed = false;
+    if (input.onStart) {
+      input.onStart = false;
       state.shufflingTime = 0;
       state.winningShell = Math.floor(Math.random() * 3);
       state.catWins = Math.random() > 0.5;
@@ -213,8 +220,8 @@
       message("Gato is pissed!");
     }
 
-    if (input.startPressed) {
-      input.startPressed = false;
+    if (input.onStart) {
+      input.onStart = false;
       return stateIdle;
     }
 
