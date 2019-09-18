@@ -9,7 +9,7 @@ h1 {
 }
 
 .status {
-  height: 6rem;
+  width: 30rem;
   text-align: center;
   font-size: 2rem;
 }
@@ -63,7 +63,7 @@ h1 {
 }
 
 .hide {
-  visibility: hidden;
+  display: none;
 }
 
 .sprite {
