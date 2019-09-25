@@ -3,12 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <title>Gato shell game</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Mansalva&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div class="main">
-      <h1 class="gato-title">Gato Game</h1>
-      <div class="status center"></div>
+      <div class="center">
+        <h1 class="status"></h1>
+      </div>
       <div class="gato center">
         <img class="gato-tail-up" src="src/images/gato-tail-up.svg" />
         <img class="gato-body" src="src/images/gato-body.svg" />
@@ -79,10 +84,12 @@
         <img class="shell shell-1" src="src/images/shell.svg" />
         <img class="shell shell-2" src="src/images/shell.svg" />
         <img class="shell shell-3" src="src/images/shell.svg" />
+        <img class="shell shell-open hide" src="src/images/shell-open.svg" />
+        <img src="src/images/treat.svg" class="treat hide" />
       </div>
     </div>
-    <div class="button-group">
-      <input type="button" class="start-button" value="Start" />
+    <div class="footer">
+      <button class="start-button">Start</button>
     </div>
 
     <script src="util/point.js"></script>

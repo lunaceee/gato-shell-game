@@ -1,17 +1,15 @@
 html,
 body {
   margin: 0;
-}
-
-h1 {
-  color: red;
-  text-align: center;
+  font-family: "Mansalva", cursive;
 }
 
 .status {
-  width: 30rem;
+  min-height: 5rem;
+  width: auto;
+  padding: 2rem 0;
   text-align: center;
-  font-size: 2rem;
+  font-size: 4rem;
 }
 
 .main {
@@ -20,9 +18,10 @@ h1 {
 }
 
 .gato {
-  width: 30rem;
-  height: 33rem;
+  width: 20rem;
+  height: 20rem;
   position: relative;
+  overflow: hidden;
 }
 
 .center {
@@ -50,16 +49,41 @@ h1 {
   list-style: none;
 }
 
-.button-group {
-  display: flex;
-  height: 6rem;
-  justify-content: center;
+.footer {
+  margin: auto;
+  text-align: center;
 }
 
 .start-button {
   z-index: 100;
+  width: 10rem;
+  height: 4rem;
+  border: 3px solid black;
+  box-shadow: 6px 5px;
+  border-radius: 0.5rem;
   font-size: 2rem;
   font-weight: bold;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  transition: background-color 0.1s;
+}
+
+.start-button:hover {
+  background-color: orange;
+}
+
+button:disabled {
+  color: grey;
+  border-color: grey;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.start-button:focus {
+  outline: none;
+}
+
+.start-button:hover {
+  cursor: pointer;
 }
 
 .hide {
