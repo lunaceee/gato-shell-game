@@ -46,12 +46,11 @@
 
   const state = {
     shells: [
-      new Sprite(".shell-1", new Point(3, 0.25), new Point(4, 4)),
-      new Sprite(".shell-2", new Point(13, 0.25), new Point(4, 4)),
-      new Sprite(".shell-3", new Point(23, 0.25), new Point(4, 4))
+      new Sprite(".shell-1", new Point(6, 0.25)),
+      new Sprite(".shell-2", new Point(13, 0.25)),
+      new Sprite(".shell-3", new Point(20, 0.25))
     ],
-    shellOpen: new Sprite(".shell-open", new Point(2.8, 0)),
-    treat: new Sprite(".treat", new Point(3.5, 2)),
+    shellOpen: new Sprite(".shell-open", new Point(0, 0)),
     tailDt: -1,
     lastBranch: "",
     shufflingTime: 0,
@@ -77,12 +76,12 @@
     body: new Sprite(".gato-body", new Point(5, 3), new Point(9.5, 10.5)),
     defaultNoseMouth: new Sprite(
       ".nose-mouth-default",
-      new Point(9.5, 8),
+      new Point(9.3, 8),
       new Point(1.2, 1.2)
     ),
     snarkyNoseMouth: new Sprite(
       ".nose-mouth-snarky",
-      new Point(9.5, 8),
+      new Point(9.2, 8),
       new Point(1.3, 1.2)
     ),
     mushtache: new Sprite(".mustache", new Point(4, 8), new Point(11.25, 2.25)),
@@ -96,11 +95,7 @@
       new Point(8, 12),
       new Point(4.5, 2.3)
     ),
-    legsLeft: new Sprite(
-      ".legs-left",
-      new Point(6.5, 12.5),
-      new Point(7.2, 3.5)
-    ),
+    legsLeft: new Sprite(".legs-left", new Point(6, 11.8), new Point(7.2, 3.5)),
     legsCenter: new Sprite(
       ".legs-center",
       new Point(8, 12.5),
@@ -185,7 +180,7 @@
     if (state.eyeX > 1) state.eyeX = -1;
     let k = Math.abs(state.eyeX);
     gato.eyeLeft.move(new Point(6.6 + k, 5.5));
-    gato.eyeRight.move(new Point(10 + k, 5.5));
+    gato.eyeRight.move(new Point(9.7 + k, 5.5));
     gato.eyeDotsDefaultLeft.move(new Point(7 + k, 6));
     gato.eyeDotsDefaultRight.move(new Point(11 + k, 6));
 
@@ -319,16 +314,12 @@
 
   function stateRevealShell(dt) {
     state.shellOpen.show();
-    state.treat.show();
     if (state.winningShell === 0) {
-      state.shellOpen.move(new Point(2.8, 0));
-      state.treat.move(new Point(3.5, 2));
+      state.shellOpen.move(new Point(6, 0.25));
     } else if (state.winningShell === 1) {
-      state.shellOpen.move(new Point(12.8, 0));
-      state.treat.move(new Point(13.4, 2));
+      state.shellOpen.move(new Point(13, 0.25));
     } else {
-      state.shellOpen.move(new Point(22.8, 0));
-      state.treat.move(new Point(23.5, 2));
+      state.shellOpen.move(new Point(20, 0.25));
     }
     gato.funkyEyeframe.show();
     gato.funkyEyes.show();
@@ -383,7 +374,6 @@
     gato.funkyEyeframe.hide();
     gato.funkyEyes.hide();
     state.shellOpen.hide();
-    state.treat.hide();
     startButton.disabled = false;
 
     message("Gato is ready");
