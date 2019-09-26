@@ -2,14 +2,21 @@
   "use strict";
 
   class Sprite {
-    constructor(cssSelector, p0) {
+    constructor(cssSelector, p0, size) {
       this.cssSelector = cssSelector;
       this.element = document.querySelector(cssSelector);
       this.element.classList.add("sprite");
       this.p0 = p0;
-
+      if (size) {
+        this.resize(size);
+      }
       // Move to the initial position.
       this.move(this.p0);
+    }
+
+    resize(pt) {
+      this.element.style.width = `${pt.x}rem`;
+      this.element.style.height = `${pt.y}rem`;
     }
 
     rotate(radians) {
@@ -18,10 +25,6 @@
 
     hide() {
       this.element.classList.add("hide");
-    }
-
-    disabled() {
-      this.element.classList.add("disabled");
     }
 
     show() {
@@ -43,9 +46,9 @@
 
   const state = {
     shells: [
-      new Sprite(".shell-1", new Point(3, 0.25)),
-      new Sprite(".shell-2", new Point(13, 0.25)),
-      new Sprite(".shell-3", new Point(23, 0.25))
+      new Sprite(".shell-1", new Point(3, 0.25), new Point(4, 4)),
+      new Sprite(".shell-2", new Point(13, 0.25), new Point(4, 4)),
+      new Sprite(".shell-3", new Point(23, 0.25), new Point(4, 4))
     ],
     shellOpen: new Sprite(".shell-open", new Point(2.8, 0)),
     treat: new Sprite(".treat", new Point(3.5, 2)),
@@ -71,36 +74,103 @@
   message("Gato is ready");
 
   const gato = {
-    body: new Sprite(".gato-body", new Point(5, 3)),
-    defaultNoseMouth: new Sprite(".nose-mouth-default", new Point(9.5, 8)),
-    snarkyNoseMouth: new Sprite(".nose-mouth-snarky", new Point(9.5, 8)),
-    mushtache: new Sprite(".gato-mustache", new Point(4, 8)),
-    tailUp: new Sprite(".gato-tail-up", new Point(10.5, 9.5)),
-    defaultLegs: new Sprite(".legs-default", new Point(8, 12.5)),
-    legsLeft: new Sprite(".legs-left", new Point(6.5, 12.5)),
-    legsCenter: new Sprite(".legs-center", new Point(8, 12.5)),
-    legsRight: new Sprite(".legs-right", new Point(7.3, 12.5)),
-    defaultEyeFrame: new Sprite(".default-eyeframe", new Point(6.3, 5)),
-    shufflingEyeframe: new Sprite(".shuffling-eyeframe", new Point(6.3, 5)),
-    funkyEyeframe: new Sprite(".funky-eyeframe", new Point(6.3, 5)),
-    eyeBg: new Sprite(".eye-background", new Point(6.5, 5)),
-    eyeLeftDown: new Sprite(".eyeball-down-left", new Point(7.6, 5.8)),
-    eyeRightDown: new Sprite(".eyeball-down-right", new Point(10.7, 5.8)),
-    eyeDotsLeftDown: new Sprite(".eyeball-dots-down-left", new Point(8.5, 6.7)),
+    body: new Sprite(".gato-body", new Point(5, 3), new Point(9.5, 10.5)),
+    defaultNoseMouth: new Sprite(
+      ".nose-mouth-default",
+      new Point(9.5, 8),
+      new Point(1.2, 1.2)
+    ),
+    snarkyNoseMouth: new Sprite(
+      ".nose-mouth-snarky",
+      new Point(9.5, 8),
+      new Point(1.3, 1.2)
+    ),
+    mushtache: new Sprite(".mustache", new Point(4, 8), new Point(11.25, 2.25)),
+    tailUp: new Sprite(
+      ".gato-tail-up",
+      new Point(10.5, 9.5),
+      new Point(6, 3.6)
+    ),
+    defaultLegs: new Sprite(
+      ".legs-default",
+      new Point(8, 12),
+      new Point(4.5, 2.3)
+    ),
+    legsLeft: new Sprite(
+      ".legs-left",
+      new Point(6.5, 12.5),
+      new Point(7.2, 3.5)
+    ),
+    legsCenter: new Sprite(
+      ".legs-center",
+      new Point(8, 12.5),
+      new Point(5, 3.5)
+    ),
+    legsRight: new Sprite(
+      ".legs-right",
+      new Point(7.3, 12.5),
+      new Point(6.3, 3.3)
+    ),
+    defaultEyeFrame: new Sprite(
+      ".default-eyeframe",
+      new Point(6.3, 5),
+      new Point(7, 3.3)
+    ),
+    shufflingEyeframe: new Sprite(
+      ".shuffling-eyeframe",
+      new Point(6.3, 5),
+      new Point(7, 2.8)
+    ),
+    funkyEyeframe: new Sprite(
+      ".funky-eyeframe",
+      new Point(6.3, 5),
+      new Point(7, 2.8)
+    ),
+    eyeBg: new Sprite(".eye-background", new Point(6.5, 5), new Point(7, 2.8)),
+    eyeLeftDown: new Sprite(
+      ".eyeball-down-left",
+      new Point(7.6, 5.8),
+      new Point(1.65, 1.5)
+    ),
+    eyeRightDown: new Sprite(
+      ".eyeball-down-right",
+      new Point(10.7, 5.8),
+      new Point(1.65, 1.6)
+    ),
+    eyeDotsLeftDown: new Sprite(
+      ".eyeball-dots-down-left",
+      new Point(8.5, 6.7),
+      new Point(0.8, 0.6)
+    ),
     eyeDotsRightDown: new Sprite(
       ".eyeball-dots-down-right",
-      new Point(11, 6.7)
+      new Point(11, 6.7),
+      new Point(0.8, 0.6)
     ),
-    eyeLeft: new Sprite(".eyeball-default-left", new Point(0, 0)),
-    eyeRight: new Sprite(".eyeball-default-right", new Point(0, 0)),
-    funkyEyes: new Sprite(".funky-eyes", new Point(7.4, 5.8)),
+    eyeLeft: new Sprite(
+      ".eyeball-default-left",
+      new Point(0, 0),
+      new Point(2.5, 2)
+    ),
+    eyeRight: new Sprite(
+      ".eyeball-default-right",
+      new Point(0, 0),
+      new Point(2.5, 2)
+    ),
+    funkyEyes: new Sprite(
+      ".funky-eyes",
+      new Point(7.4, 5.8),
+      new Point(5, 1.2)
+    ),
     eyeDotsDefaultLeft: new Sprite(
       ".eyeball-dots-default-left",
-      new Point(7, 7.5)
+      new Point(7, 7.5),
+      new Point(1, 0.7)
     ),
     eyeDotsDefaultRight: new Sprite(
       ".eyeball-dots-default-right",
-      new Point(15.5, 7.5)
+      new Point(15.5, 7.5),
+      new Point(1, 0.7)
     )
   };
 

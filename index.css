@@ -4,6 +4,10 @@ body {
   font-family: "Mansalva", cursive;
 }
 
+img {
+  outline: 1px solid green;
+}
+
 .status {
   min-height: 5rem;
   width: auto;
@@ -41,8 +45,6 @@ body {
 
 .shells > img {
   position: absolute;
-  width: 5rem;
-  height: 5rem;
 }
 
 .shell {
