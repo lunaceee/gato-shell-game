@@ -35,14 +35,14 @@
   gato.add(".eye-left", 0, 0, 2.5, 2);
   gato.add(".eye-right", 0, 0, 2.5, 2);
   gato.add(".eye-dots-default-left", 7, 7.5, 1, 0.7);
-  gato.add(".eye-dots-default-right", 15.5, 7.5, 1, 0.7);
+  gato.add(".eye-dots-default-right", 12, 7.5, 1, 0.7);
   gato.add(".eye-dots-down-left", 8.5, 6.7, 0.8, 0.6);
   gato.add(".eye-dots-down-right", 11, 6.7, 0.8, 0.6);
   gato.add(".eye-left-down", 7.6, 5.8, 1.65, 1.5);
   gato.add(".eye-right-down", 10.7, 5.8, 1.65, 1.6);
   gato.add(".funky-eye-frame", 6.3, 5, 7, 2.8);
-  gato.add(".funky-eyes", 7.4, 5.8, 5, 1.2);
-  gato.add(".gato-body", 5, 3, 9.5, 10.5);
+  gato.add(".funky-eyes", 7.4, 5.7, 5, 1.2);
+  gato.add(".body", 5, 3, 9.5, 10.5);
   gato.add(".tail-up", 10.5, 9.5, 6, 3.6);
   gato.add(".legs-center", 8, 12.5, 5, 3.5);
   gato.add(".legs-default", 8, 12, 4.5, 2.3);
@@ -66,7 +66,7 @@
     gato.eyeLeft.move(new Point(6.6 + k, 5.5));
     gato.eyeRight.move(new Point(9.7 + k, 5.5));
     gato.eyeDotsDefaultLeft.move(new Point(7 + k, 6));
-    gato.eyeDotsDefaultRight.move(new Point(11 + k, 6));
+    gato.eyeDotsDefaultRight.move(new Point(10.7 + k, 6));
 
     state.tailDt = state.tailDt + dt / 1000;
     if (state.tailDt > 1) {
