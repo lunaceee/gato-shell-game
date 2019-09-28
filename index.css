@@ -4,66 +4,33 @@ body {
   font-family: "Mansalva", cursive;
 }
 
-img {
-  outline: 1px red solid;
-}
-
-.status {
-  margin: 0;
-  text-align: center;
-  font-size: 3rem;
-}
-
-.align-status {
-  padding: 2rem 0 0 0;
-  width: 100%;
-  min-height: 8rem;
-}
-
 .page {
   display: flex;
   flex-direction: column;
 }
 
-.gato {
-  width: 20rem;
-  height: 20rem;
-  position: relative;
-  overflow: hidden;
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
 }
 
-.center {
-  margin: auto;
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 5px solid black;
 }
 
-.dog {
-  position: relative;
-  width: 16rem;
-}
-
-.dog > img,
-.gato > img {
-  position: absolute;
-}
-
-.shells {
-  display: block;
-  position: relative;
-  width: 30rem;
-  height: 10rem;
-}
-
-.shells > img {
-  position: absolute;
-}
-
-.shell {
-  list-style: none;
+.status {
+  text-align: center;
+  font-size: 3rem;
+  height: 8rem;
 }
 
 .start-button {
-  z-index: 100;
-  float: right;
+  margin-bottom: 3rem;
   width: 10rem;
   height: 4rem;
   border: 3px solid black;
@@ -73,6 +40,39 @@ img {
   font-weight: bold;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   transition: background-color 0.1s;
+}
+
+.gato {
+  margin-top: 5rem;
+  width: 20rem;
+  height: 22rem;
+  position: relative;
+}
+
+.gato > img {
+  position: absolute;
+  width: 100%; /* to make sure firefox works fine*/
+}
+
+.center {
+  margin: auto;
+}
+
+.shells {
+  width: 25rem;
+  display: block;
+  position: relative;
+}
+
+.shells > img {
+  position: absolute;
+  width: 100%;
+}
+
+.shell {
+  list-style: none;
+  width: 10rem;
+  height: 8rem;
 }
 
 .start-button:hover {
@@ -100,4 +100,29 @@ button:disabled {
 
 .sprite {
   transform-origin: top left;
+}
+
+.footer {
+  text-align: center;
+}
+
+@media only screen and (min-width: 1200px) {
+  .page {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+  }
+
+  .status {
+    width: 20vw;
+    height: 70vh;
+  }
+
+  .sidebar {
+    padding: 3rem; /* TODO: figure out why we need this to make sidebar take the whole screen */
+  }
+
+  .main {
+    width: 80vw;
+  }
 }

@@ -3,9 +3,9 @@
 
   const state = {
     shells: [
-      new Sprite(".shell-1", new Point(6, 0.25)),
-      new Sprite(".shell-2", new Point(13, 0.25)),
-      new Sprite(".shell-3", new Point(20, 0.25))
+      new Sprite(".shell-1", new Point(-8, 8)),
+      new Sprite(".shell-2", new Point(1, 8)),
+      new Sprite(".shell-3", new Point(10, 8))
     ],
     shellOpen: new Sprite(".shell-open", new Point(0, 0)),
     tailDt: -1,
@@ -30,28 +30,30 @@
   message("Gato is ready");
 
   const gato = new SpriteGroup();
-  gato.add(".default-eye-frame", 6.3, 5, 7, 3.3);
-  gato.add(".eye-background", 6.5, 5, 7, 2.8);
+  gato.add(".body", 0, 0);
+  gato.add(".default-eye-frame", 2.8, 3);
+  gato.add(".eye-background", 2.9, 3);
   gato.add(".eye-left", 0, 0, 2.5, 2);
   gato.add(".eye-right", 0, 0, 2.5, 2);
-  gato.add(".eye-dots-default-left", 7, 7.5, 1, 0.7);
-  gato.add(".eye-dots-default-right", 12, 7.5, 1, 0.7);
-  gato.add(".eye-dots-down-left", 8.5, 6.7, 0.8, 0.6);
-  gato.add(".eye-dots-down-right", 11, 6.7, 0.8, 0.6);
-  gato.add(".eye-left-down", 7.6, 5.8, 1.65, 1.5);
-  gato.add(".eye-right-down", 10.7, 5.8, 1.65, 1.6);
-  gato.add(".funky-eye-frame", 6.3, 5, 7, 2.8);
-  gato.add(".funky-eyes", 7.4, 5.7, 5, 1.2);
-  gato.add(".body", 5, 3, 9.5, 10.5);
-  gato.add(".tail-up", 10.5, 9.5, 6, 3.6);
-  gato.add(".legs-center", 8, 12.5, 5, 3.5);
-  gato.add(".legs-default", 8, 12, 4.5, 2.3);
-  gato.add(".legs-left", 6, 11.8, 7.2, 3.5);
-  gato.add(".legs-right", 7.3, 12.5, 6.3, 3.3);
-  gato.add(".mustache", 4, 8, 11.25, 2.25);
-  gato.add(".nose-mouth-default", 9.3, 8, 1.2, 1.2);
-  gato.add(".nose-mouth-snarky", 9.2, 8, 1.3, 1.2);
-  gato.add(".shuffling-eye-frame", 6.3, 5, 7, 2.8);
+  gato.add(".eye-dots-default-left", 2, 5);
+  gato.add(".eye-dots-default-right", 9, 5);
+
+  gato.add(".eye-left-down", 5, 4.5);
+  gato.add(".eye-right-down", 10.2, 4.5);
+  gato.add(".eye-dots-down-left", 6.2, 6);
+  gato.add(".eye-dots-down-right", 11, 6);
+
+  gato.add(".funky-eye-frame", 2.8, 3);
+  gato.add(".funky-eyes", 4.6, 4.3);
+  gato.add(".tail-up", 10.5, 9.5);
+  gato.add(".legs-center", 5, 16);
+  gato.add(".legs-default", 5, 16);
+  gato.add(".legs-left", 2, 16);
+  gato.add(".legs-right", 4, 16);
+  gato.add(".mustache", -1, 8);
+  gato.add(".nose-mouth-default", 8, 9);
+  gato.add(".nose-mouth-snarky", 8, 9);
+  gato.add(".shuffling-eye-frame", 2.8, 3);
 
   const startButton = document.querySelector(".start-button");
 
@@ -63,10 +65,10 @@
     state.eyeX = state.eyeX + dt / 1000;
     if (state.eyeX > 1) state.eyeX = -1;
     let k = Math.abs(state.eyeX);
-    gato.eyeLeft.move(new Point(6.6 + k, 5.5));
-    gato.eyeRight.move(new Point(9.7 + k, 5.5));
-    gato.eyeDotsDefaultLeft.move(new Point(7 + k, 6));
-    gato.eyeDotsDefaultRight.move(new Point(10.7 + k, 6));
+    gato.eyeLeft.move(new Point(3.4 + k, 3.8));
+    gato.eyeRight.move(new Point(9 + k, 3.8));
+    gato.eyeDotsDefaultLeft.move(new Point(4.5 + k, 5));
+    gato.eyeDotsDefaultRight.move(new Point(10.5 + k, 5));
 
     state.tailDt = state.tailDt + dt / 1000;
     if (state.tailDt > 1) {
@@ -199,11 +201,11 @@
   function stateRevealShell(dt) {
     state.shellOpen.show();
     if (state.winningShell === 0) {
-      state.shellOpen.move(new Point(6, 0.25));
+      state.shellOpen.move(new Point(-8, 8));
     } else if (state.winningShell === 1) {
-      state.shellOpen.move(new Point(13, 0.25));
+      state.shellOpen.move(new Point(1, 8));
     } else {
-      state.shellOpen.move(new Point(20, 0.25));
+      state.shellOpen.move(new Point(10, 8));
     }
     gato.funkyEyeFrame.show();
     gato.funkyEyes.show();

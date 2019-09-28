@@ -44,8 +44,8 @@ class Sprite {
 class SpriteGroup {
   constructor() {}
 
-  add(cssClass, x, y, width, height) {
+  add(cssClass, x, y) {
     const key = camelize(cssClass.replace(".", "").split("-"));
-    this[key] = new Sprite(cssClass, new Point(x, y), new Point(width, height));
+    this[key] = new Sprite(cssClass, new Point(x, y));
   }
 }
