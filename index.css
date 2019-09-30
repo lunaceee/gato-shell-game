@@ -4,6 +4,10 @@ body {
   font-family: "Mansalva", cursive;
 }
 
+img {
+  border: 1px solid black;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -51,7 +55,7 @@ body {
 
 .gato > img {
   position: absolute;
-  width: 100%; /* to make sure firefox works fine*/
+  width: 100%; /* fixes for firefox and IE */
 }
 
 .center {
