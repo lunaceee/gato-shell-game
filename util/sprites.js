@@ -1,3 +1,4 @@
+"use strict";
 class Sprite {
   constructor(cssSelector, p0, size) {
     this.cssSelector = cssSelector;

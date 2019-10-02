@@ -1,3 +1,5 @@
+"use strict";
+
 class GameShuffling extends GameState {
   constructor(gato, shells) {
     super();

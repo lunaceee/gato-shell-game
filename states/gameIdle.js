@@ -1,3 +1,5 @@
+"use strict";
+
 class GameIdle extends GameState {
   onStart() {
     console.log("switched to idling");
@@ -18,6 +20,7 @@ class GameIdle extends GameState {
 
   onUpdate(dt) {
     // Do nothing for now,
+    // We just wait for the user to press start.
   }
 
   nextState() {

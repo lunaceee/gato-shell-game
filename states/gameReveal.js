@@ -1,7 +1,6 @@
-// this.this.state.winningShell = Math.floor(Math.random() * 3);
-// nextthis.state: Math.random() > 0.5 ? "this.gatoWon" : "this.gatoLost"
+"use strict";
 
-class GameReveal extends Gamethis.state {
+class GameReveal extends GameState {
   constructor(gato, shellOpen) {
     super();
     this.gato = gato;
@@ -16,7 +15,7 @@ class GameReveal extends Gamethis.state {
     this.shellOpen.show();
 
     this.state = {
-      winningShell: 0
+      winningShell: Math.floor(Math.random() * 3)
     };
 
     if (this.state.winningShell === 0) {

@@ -1,3 +1,5 @@
+"use strict";
+
 class GameState {
   constructor() {
     this.initialized = false;
