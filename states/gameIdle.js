@@ -18,7 +18,6 @@ class GameIdle extends GameState {
 
   onUpdate(dt) {
     // Do nothing for now,
-    // We just wait for the user to press start.
   }
 
   nextState() {

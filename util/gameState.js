@@ -27,6 +27,11 @@ class GameState {
   onStart() {}
 
   /**
+   * Called only once, before moving to the next state.
+   */
+  onEnd() {}
+
+  /**
    * Called each tick to update the state of the object
    * @param dt is the numbers of milliseconds since
    * last update.

@@ -5,6 +5,25 @@ class GatoIdling extends GameState {
   }
 
   onStart() {
+    gato.legsDefault.show();
+    gato.noseMouthSnarky.hide();
+    gato.noseMouthDefault.show();
+    gato.legsCenter.hide();
+    gato.legsLeft.hide();
+    gato.legsRight.hide();
+    gato.defaultEyeFrame.show();
+    gato.eyeLeft.show();
+    gato.eyeRight.show();
+    gato.eyeDotsDefaultLeft.show();
+    gato.eyeDotsDefaultRight.show();
+    gato.shufflingEyeFrame.hide();
+    gato.eyeLeftDown.hide();
+    gato.eyeRightDown.hide();
+    gato.eyeDotsDownLeft.hide();
+    gato.eyeDotsDownRight.hide();
+    gato.funkyEyeFrame.hide();
+    gato.funkyEyes.hide();
+
     this.state = {
       tailDt: -1,
       eyeX: -1
