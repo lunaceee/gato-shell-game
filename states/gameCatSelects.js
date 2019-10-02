@@ -8,3 +8,5 @@
 // if (s === 2) gato.legsRight.show();
 // gato.legsDefault.hide();
 
+// TODO: implement cat selection.
+

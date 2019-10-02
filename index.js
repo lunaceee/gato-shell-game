@@ -15,7 +15,7 @@
       case "shuffling":
         return new GameShuffling(gato, shells);
       case "reveal":
-        return new GameReveal();
+        return new GameReveal(gato, shellOpen);
     }
   }
 

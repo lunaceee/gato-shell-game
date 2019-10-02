@@ -3,6 +3,9 @@
 class GameIdle extends GameState {
   onStart() {
     console.log("switched to idling");
+
+    message("Gato is ready to play");
+
     this.state = {
       startPressed: false
     };

@@ -15,7 +15,7 @@ class GameShuffling extends GameState {
   onStart() {
     console.log("switched to shuffling");
 
-    // TODO: message("Game on!");
+    message("Game on!");
 
     this.gato.defaultEyeFrame.hide();
     this.gato.eyeLeft.hide();

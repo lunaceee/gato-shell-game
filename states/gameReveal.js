@@ -12,10 +12,9 @@ class GameReveal extends GameState {
   }
 
   onStart() {
-    this.shellOpen.show();
-
     this.state = {
-      winningShell: Math.floor(Math.random() * 3)
+      winningShell: Math.floor(Math.random() * 3),
+      catSelection: Math.floor(Math.random() * 3)
     };
 
     if (this.state.winningShell === 0) {
@@ -25,6 +24,7 @@ class GameReveal extends GameState {
     } else {
       this.shellOpen.move(new Point(10, 8));
     }
+    this.shellOpen.show();
 
     this.gato.funkyEyeFrame.show();
     this.gato.funkyEyes.show();
@@ -37,15 +37,15 @@ class GameReveal extends GameState {
     if (this.state.winningShell === this.state.catSelection) {
       this.gato.noseMouthSnarky.show();
       this.gato.noseMouthDefault.hide();
-      // message(
-      //   `Winning shell is ${this.state.winningShell +
-      //     1}, this.gato won and smiles snarkly!`
-      // );
+      message(
+        `Winning shell is ${this.state.winningShell +
+          1}, this.gato won and smiles snarkly!`
+      );
     } else {
-      // message(
-      //   `Winning shell is ${this.state.winningShell +
-      //     1}, this.gato lost and he is pissed!`
-      // );
+      message(
+        `Winning shell is ${this.state.winningShell +
+          1}, this.gato lost and he is pissed!`
+      );
     }
   }
 
