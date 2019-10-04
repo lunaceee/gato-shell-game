@@ -1,0 +1,23 @@
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2">
+    <g id="shocked-eyes-2">
+        <g filter="url(#_Effect1)">
+            <path d="M10.505 5.716c2.471-.146 4.896 1.597 5.093 4.835.078 1.289-.814 3.171-1.629 3.755-1.091.781-3.398 1.355-4.772.838-2.056-.772-3.934-2.567-3.397-5.303.551-2.806 2.235-3.98 4.705-4.125z" fill="#31323d" stroke="#fff" stroke-width="5.5"/>
+        </g>
+        <path d="M11.898 7.838c.993-.196 1.246-.079 2.058 1.315.538.924-.35 1.904-1.343 2.1-.994.196-1.872-.37-2.072-1.42-.199-1.051.364-1.799 1.357-1.995zM8.584 10.345a.894.894 0 01.959.822.893.893 0 01-.807.971.894.894 0 01-.959-.821.895.895 0 01.807-.972z" fill="#fff"/>
+        <g>
+            <g filter="url(#_Effect2)">
+                <path d="M70.068 6.212c-2.293-.166-4.569 1.423-4.793 4.429-.089 1.196.461 2.572 1.211 3.124 1.003.74 2.519 1.154 3.88 1.073 1.552-.092 3.462-1.061 3.873-4.136.373-2.793-1.877-4.323-4.171-4.49z" fill="#31323d" stroke="#fff" stroke-width="5" stroke-linecap="butt"/>
+            </g>
+            <path d="M71.197 7.893c-.932.222-1.472.559-1.386 1.566.178 2.057 1.73 1.753 2.636 1.263.842-.456.619-3.273-1.25-2.829z" fill="#fff"/>
+            <ellipse cx="68.519" cy="11.175" rx=".838" ry=".986" fill="#fff"/>
+        </g>
+    </g>
+    <defs>
+        <filter id="_Effect1" filterUnits="userSpaceOnUse" x="-3.571" y="-3.558" width="28.424" height="28.163">
+            <feGaussianBlur in="SourceGraphic" stdDeviation=".986"/>
+        </filter>
+        <filter id="_Effect2" filterUnits="userSpaceOnUse" x="56.11" y="-2.996" width="27.325" height="27.028">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1"/>
+        </filter>
+    </defs>
+</svg>

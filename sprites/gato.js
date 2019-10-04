@@ -17,7 +17,12 @@ gato.add(".eye-dots-down-left", 6.2, 6);
 gato.add(".eye-dots-down-right", 11, 5.8);
 
 gato.add(".funky-eye-frame", 2.8, 3);
-gato.add(".funky-eyes", 4.6, 4.3);
+gato.add(".funky-eyes", 4.6, 4.2);
+
+gato.add(".shocked-eye-frame", 2.3, 3);
+gato.add(".innocent-eyes", 4, 4);
+gato.add(".shocked-eyes", 4.2, 4.3);
+gato.add(".ultra-shocked-eyes", 4.6, 4.2);
 
 gato.add(".tail-up", 10.5, 9.5);
 gato.add(".legs-center", 5, 16);

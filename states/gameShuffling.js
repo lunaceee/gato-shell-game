@@ -17,11 +17,13 @@ class GameShuffling extends GameState {
 
     message("Game on!");
 
-    this.gato.defaultEyeFrame.hide();
-    this.gato.eyeLeft.hide();
-    this.gato.eyeRight.hide();
-    this.gato.eyeDotsDefaultLeft.hide();
-    this.gato.eyeDotsDefaultRight.hide();
+    this.gato.hide();
+    this.gato.body.show();
+    this.gato.eyeBackground.show();
+    this.gato.tailUp.show();
+    this.gato.mustache.show();
+    this.gato.noseMouthDefault.show();
+    this.gato.legsDefault.show();
     this.gato.shufflingEyeFrame.show();
     this.gato.eyeLeftDown.show();
     this.gato.eyeRightDown.show();
@@ -71,8 +73,6 @@ class GameShuffling extends GameState {
   }
 
   nextState() {
-    if (this.isDone()) {
-      return "reveal";
-    }
+    return "gatoSelects";
   }
 }

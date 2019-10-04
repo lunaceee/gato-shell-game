@@ -43,10 +43,28 @@ class Sprite {
 }
 
 class SpriteGroup {
-  constructor() {}
+  constructor() {
+    this.keys = [];
+  }
 
+  /**
+   * Converted class names into gato parts
+   * @param {} cssClass
+   * @param {*} x
+   * @param {*} y
+   */
   add(cssClass, x, y) {
     const key = camelize(cssClass.replace(".", "").split("-"));
+    this.keys.push(key);
     this[key] = new Sprite(cssClass, new Point(x, y));
+  }
+
+  /**
+   * Hides all the sprites on the SpriteGroup
+   */
+  hide() {
+    for (const key of this.keys) {
+      this[key].hide();
+    }
   }
 }

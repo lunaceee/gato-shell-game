@@ -1,34 +1,29 @@
 (function(window) {
   "use strict";
-
-  const gatoStatus = document.querySelector(".status");
-  function message(str) {
-    gatoStatus.innerText = str;
-  }
-
-  message("Gato is ready to play");
-
+  let gameState = {
+    gameShufflingCycle: 0,
+    numberOfConsecutiveWins: 0,
+    catSelection: null,
+    numberOfConsecutiveLosses: 0
+  };
   function stateFactory(name) {
     switch (name) {
       case "idle":
-        return new GameIdle();
+        return new GameIdle(gato);
       case "shuffling":
         return new GameShuffling(gato, shells);
+      case "gatoSelects":
+        gameState.catSelection = Math.floor(Math.random() * 3);
+        return new GatoSelects(gato, gameState.catSelection);
       case "reveal":
-        return new GameReveal(gato, shellOpen);
+        gameState.gameShufflingCycle++;
+        return new GameReveal(gato, shellOpen, gameState);
     }
   }
 
   let currentState = stateFactory("idle");
 
-  // TODO: remove common updates.
-  let gatoIdling = new GatoIdling(gato);
-  function commonUpdates(dt) {
-    gatoIdling.tick(dt);
-  }
-
   function gameLoop(dt) {
-    commonUpdates(dt);
     currentState.tick(dt);
     if (currentState.isDone()) {
       currentState.onEnd();
