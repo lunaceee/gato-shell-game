@@ -9,6 +9,9 @@ class GameReveal extends GameState {
       winningShell: Math.floor(Math.random() * 3),
       gameState
     };
+    if (Math.random() > 0.1) {
+      this.state.winningShell = this.state.gameState.catSelection;
+    }
   }
 
   isDone() {
@@ -17,6 +20,7 @@ class GameReveal extends GameState {
 
   onStart() {
     let { winningShell, gameState } = this.state;
+    const shellCount = `${winningShell + 1}`;
     if (winningShell === 0) {
       this.shellOpen.move(new Point(-8, 8));
     } else if (this.state.winningShell === 1) {
@@ -26,67 +30,20 @@ class GameReveal extends GameState {
     }
     this.shellOpen.show();
 
-    // this.gato.funkyEyeFrame.show();
-    // this.gato.funkyEyes.show();
-
     // Hide shuffling eyes and eyeframes
     this.gato.shufflingEyeFrame.hide();
-    this.gato.eyeLeftDown.hide();
-    this.gato.eyeRightDown.hide();
-    this.gato.eyeDotsDownLeft.hide();
-    this.gato.eyeDotsDownRight.hide();
-
-    console.log(this.gato.innocentEyes);
-    console.log(gameState.gameShufflingCycle);
-
-    //   if (gameShufflingCycle === 1 && winningShell === catSelection) {
-    //     this.gato.innocentEyes.show();
-    //     this.gato.shockedEyeFrame.show();
-    //     this.gato.funkyEyes.hide();
-    //     this.gato.noseMouthSnarky.show();
-    //     this.gato.noseMouthDefault.hide();
-    //     message(`Winning shell is ${winningShell + 1}, gato wins for 1`);
-    //   } else if (gameShufflingCycle === 1 && winningShell !== catSelection) {
-    //     this.gato.funkyEyeFrame.show();
-    //     this.gato.funkyEyes.show();
-    //     this.gato.innocentEyes.hide();
-    //     message(`Winning shell is ${winningShell + 1}, gato lost for 1`);
-    //   } else if (gameShufflingCycle % 2 === 0 && winningShell === catSelection) {
-    //     this.gato.funkyEyes.show();
-    //     this.gato.funkyEyeFrame.show();
-    //     this.gato.noseMouthSnarky.show();
-    //     this.gato.noseMouthDefault.hide();
-    //     message(`Winning shell is ${winningShell + 1}, gato wins for 2`);
-    //   } else if (gameShufflingCycle % 2 === 0 && winningShell !== catSelection) {
-    //     this.gato.shockedEyeFrame.show();
-    //     this.gato.shockedEyes.show();
-    //     message(`Winning shell is ${winningShell + 1}, gato lost for 2`);
-    //   } else if (gameShufflingCycle % 3 === 0 && winningShell === catSelection) {
-    //     this.gato.funkyEyes.show();
-    //     this.gato.funkyEyeFrame.show();
-    //     this.gato.noseMouthSnarky.show();
-    //     this.gato.noseMouthDefault.hide();
-    //     message(`Winning shell is ${winningShell + 1}, gato wins for 3`);
-    //   } else if (gameShufflingCycle % 3 === 0 && winningShell !== catSelection) {
-    //     this.gato.ultraShockedEyes.show();
-    //     this.gato.shockedEyeFrame.show();
-    //     message(`Winning shell is ${winningShell + 1}, gato lost for 3`);
-    //   }
-    // }
-
+    this.gato.shufflingEyes.hide();
     if (winningShell === gameState.catSelection) {
       gameState.numberOfConsecutiveWins++;
       gameState.numberOfConsecutiveLosses = 0;
       if (gameState.numberOfConsecutiveWins % 3 === 1) {
-        this.gato.noseMouthSnarky.show();
         this.gato.noseMouthDefault.hide();
-        this.gato.innocentEyes.show();
-        this.gato.shockedEyeFrame.show();
+        this.gato.showList("noseMouthSnarky innocentEyes shockedEyeFrame");
+        message(`Shell ${shellCount} has the treat. Gato found it!`);
       } else {
-        this.gato.funkyEyes.show();
-        this.gato.funkyEyeFrame.show();
-        this.gato.noseMouthSnarky.show();
+        this.gato.showList("funkyEyes funkyEyeFrame noseMouthSnarky");
         this.gato.noseMouthDefault.hide();
+        message(`Shell ${shellCount} has the treat. Gato won again!`);
       }
     } else {
       gameState.numberOfConsecutiveLosses++;
@@ -94,12 +51,19 @@ class GameReveal extends GameState {
       if (gameState.numberOfConsecutiveLosses % 3 === 1) {
         this.gato.funkyEyes.show();
         this.gato.funkyEyeFrame.show();
+        message(
+          `Shell ${shellCount} has the treat. Gato lost and he's pissed!`
+        );
       } else if (gameState.numberOfConsecutiveLosses % 3 === 2) {
         this.gato.shockedEyes.show();
         this.gato.shockedEyeFrame.show();
+        message(`Shell ${shellCount} has the treat. Gato lost again!`);
       } else {
         this.gato.shockedEyeFrame.show();
         this.gato.ultraShockedEyes.show();
+        message(
+          `Shell ${shellCount} has the treat. Gato is speechless!@#$!@#$!@#!`
+        );
       }
     }
   }

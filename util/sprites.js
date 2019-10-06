@@ -67,4 +67,13 @@ class SpriteGroup {
       this[key].hide();
     }
   }
+
+  showList(spaceSeparatedNames) {
+    for (let name of spaceSeparatedNames.split(new RegExp("\n|\\s+"))) {
+      const sprite = this[name];
+      console.log(name);
+
+      if (sprite) sprite.show();
+    }
+  }
 }

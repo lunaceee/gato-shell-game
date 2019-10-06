@@ -18,17 +18,14 @@ class GameShuffling extends GameState {
     message("Game on!");
 
     this.gato.hide();
-    this.gato.body.show();
-    this.gato.eyeBackground.show();
-    this.gato.tailUp.show();
-    this.gato.mustache.show();
-    this.gato.noseMouthDefault.show();
-    this.gato.legsDefault.show();
-    this.gato.shufflingEyeFrame.show();
-    this.gato.eyeLeftDown.show();
-    this.gato.eyeRightDown.show();
-    this.gato.eyeDotsDownLeft.show();
-    this.gato.eyeDotsDownRight.show();
+    this.gato.showList(`body
+    eyeBackground
+    tail
+    mustache
+    noseMouthDefault
+    legsDefault
+    shufflingEyeFrame
+    shufflingEyes`);
   }
 
   onUpdate(dt) {

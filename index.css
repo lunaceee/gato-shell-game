@@ -2,15 +2,12 @@ html,
 body {
   margin: 0;
   font-family: "Mansalva", cursive;
+  /* overflow: hidden; */
 }
 
 svg {
   transition: all 0.5s ease;
 }
-
-/* img {
-  border: 1px solid black;
-} */
 
 .page {
   display: flex;
@@ -28,19 +25,19 @@ svg {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 5px solid black;
+  background-color: aquamarine;
 }
 
 .status {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.6rem;
   height: 8rem;
 }
 
 .start-button {
-  margin-bottom: 3rem;
   width: 10rem;
   height: 4rem;
+  margin-bottom: 3rem;
   border: 3px solid black;
   box-shadow: 6px 5px;
   border-radius: 0.5rem;
@@ -48,39 +45,6 @@ svg {
   font-weight: bold;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   transition: background-color 0.1s;
-}
-
-.gato {
-  margin-top: 5rem;
-  width: 20rem;
-  height: 22rem;
-  position: relative;
-}
-
-.gato > img {
-  position: absolute;
-  width: 100%; /* fixes for firefox and IE */
-}
-
-.center {
-  margin: auto;
-}
-
-.shells {
-  width: 25rem;
-  display: block;
-  position: relative;
-}
-
-.shells > img {
-  position: absolute;
-  width: 100%;
-}
-
-.shell {
-  list-style: none;
-  width: 10rem;
-  height: 8rem;
 }
 
 .start-button:hover {
@@ -92,6 +56,38 @@ button:disabled {
   border-color: grey;
   pointer-events: none;
   cursor: not-allowed;
+}
+
+.gato {
+  margin-left: 6rem;
+  margin-top: 2rem;
+  width: 20rem;
+  height: 20rem;
+  position: relative;
+}
+
+.gato > img,
+.shells > img {
+  position: absolute;
+  width: 100%; /* fixes for firefox and IE */
+}
+
+.center {
+  margin: auto;
+}
+
+.shells {
+  width: 25rem;
+  margin-left: 2rem;
+  margin-top: -6rem;
+  display: block;
+  position: relative;
+}
+
+.shell {
+  list-style: none;
+  width: 10rem;
+  height: 8rem;
 }
 
 .start-button:focus {
@@ -123,14 +119,16 @@ button:disabled {
 
   .status {
     width: 20vw;
-    height: 70vh;
+    height: 50vh;
   }
 
   .sidebar {
-    padding: 3rem; /* TODO: figure out why we need this to make sidebar take the whole screen */
+    height: 100vh;
+    padding: 3rem;
+    margin: 0;
   }
 
   .main {
-    width: 80vw;
+    width: 70vw;
   }
 }

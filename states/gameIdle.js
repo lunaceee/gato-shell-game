@@ -13,20 +13,21 @@ class GameIdle extends GameState {
 
   onStart() {
     console.log("switched to idling");
-    console.log(this.gato.ultraShockedEyes);
-    message("Gato is ready to play");
+    message("Gato is bored and ready to play");
     this.gato.hide();
-    this.gato.eyeBackground.show();
-    this.gato.body.show();
-    this.gato.tailUp.show();
-    this.gato.mustache.show();
-    this.gato.legsDefault.show();
-    this.gato.noseMouthDefault.show();
-    this.gato.defaultEyeFrame.show();
-    this.gato.eyeLeft.show();
-    this.gato.eyeRight.show();
-    this.gato.eyeDotsDefaultLeft.show();
-    this.gato.eyeDotsDefaultRight.show();
+    this.gato.showList(`
+      eyeBackground
+      mustache
+      body 
+      tail 
+      legsDefault 
+      noseMouthDefault 
+      defaultEyeFrame 
+      eyeLeft 
+      eyeRight 
+      eyeDotsDefaultLeft 
+      eyeDotsDefaultRight
+    `);
   }
 
   isDone() {
@@ -44,17 +45,17 @@ class GameIdle extends GameState {
     if (this.state.eyeX > 1) this.state.eyeX = -1;
     let k = Math.abs(this.state.eyeX);
 
-    this.gato.eyeLeft.move(new Point(3.4 + k, 3.8));
-    this.gato.eyeRight.move(new Point(9 + k, 3.8));
-    this.gato.eyeDotsDefaultLeft.move(new Point(4.5 + k, 5));
-    this.gato.eyeDotsDefaultRight.move(new Point(10.5 + k, 5));
+    this.gato.eyeLeft.move(new Point(3 + k, 3.6));
+    this.gato.eyeRight.move(new Point(7.5 + k, 3.6));
+    this.gato.eyeDotsDefaultLeft.move(new Point(3.5 + k, 4.5));
+    this.gato.eyeDotsDefaultRight.move(new Point(8.5 + k, 4.5));
 
     this.state.tailDt = this.state.tailDt + dt / 1000;
     if (this.state.tailDt > 1) {
       this.state.tailDt = -1;
     }
     let k2 = Math.abs(this.state.tailDt);
-    this.gato.tailUp.rotate(-0.7 + 1 * k2 * k2); // TODO: make cat tail movement more natural
+    this.gato.tail.rotate(-0.7 + 1 * k2 * k2); // TODO: make cat tail movement more natural
   }
 
   nextState() {
