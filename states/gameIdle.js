@@ -1,14 +1,11 @@
 "use strict";
 
 class GameIdle extends GameState {
-  constructor(gato, startButton) {
+  constructor(gameState) {
     super();
-    this.gato = gato;
-    this.startButton = startButton;
-    this.state = {
-      startPressed: false,
-      tailDt: -1
-    };
+    this.state = gameState;
+
+    this.startPressed = false;
     // Tweener for the tail
     {
       const t = new Tweener();
@@ -34,10 +31,10 @@ class GameIdle extends GameState {
   onStart() {
     console.log("switched to idling");
     message("Gato is bored and ready to play");
-    this.startButton.innerText = "Start";
-    this.startButton.disabled = false;
-    this.gato.hide();
-    this.gato.showList(`
+    this.state.startButton.innerText = "Start";
+    this.state.startButton.disabled = false;
+    gato.hide();
+    gato.showList(`
       eyeBackground
       mustache
       body 
@@ -53,27 +50,27 @@ class GameIdle extends GameState {
   }
 
   isDone() {
-    return this.state.startPressed;
+    return this.startPressed;
   }
 
   onInput(input) {
     if (input.startPressed) {
-      this.state.startPressed = true;
+      this.startPressed = true;
     }
   }
 
   onUpdate(dt) {
     let k = this.eyeMovement.value(this.elapsed % 5000);
-    this.gato.eyeLeft.move(new Point(3 + k, 3.6));
-    this.gato.eyeRight.move(new Point(7.5 + k, 3.6));
-    this.gato.eyeDotsDefaultLeft.move(new Point(3.5 + k, 4.5));
-    this.gato.eyeDotsDefaultRight.move(new Point(8.5 + k, 4.5));
+    gato.eyeLeft.move(new Point(3 + k, 3.6));
+    gato.eyeRight.move(new Point(7.5 + k, 3.6));
+    gato.eyeDotsDefaultLeft.move(new Point(3.5 + k, 4.5));
+    gato.eyeDotsDefaultRight.move(new Point(8.5 + k, 4.5));
 
     let k2 = this.tailAngle.value(this.elapsed % 4000);
-    this.gato.tail.rotate(k2); // TODO: make cat tail movement more natural
+    gato.tail.rotate(k2); // TODO: make cat tail movement more natural
   }
 
   nextState() {
-    if (this.isDone()) return "shuffling";
+    return new GameShuffling(this.state);
   }
 }

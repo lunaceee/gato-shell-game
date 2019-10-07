@@ -1,68 +1,60 @@
 "use strict";
 
 class GameReveal extends GameState {
-  constructor(gato, shellOpen, gameState) {
+  constructor(state) {
     super();
-    this.gato = gato;
-    this.shellOpen = shellOpen;
-    this.state = {
-      winningShell: Math.floor(Math.random() * 3),
-      gameState
-    };
-    if (Math.random() > 0.1) {
-      this.state.winningShell = this.state.gameState.catSelection;
-    }
+    this.state = state;
+    this.state.winningShell = Math.floor(Math.random() * 3);
   }
 
   isDone() {
-    this.state.gameState.startPressed = false;
+    this.state.startPressed = false;
     return this.elapsed > 2000;
   }
 
   onStart() {
-    let { winningShell, gameState } = this.state;
-    gameState.startButton.innerText = "Start";
-    const shellCount = `${winningShell + 1}`;
-    if (winningShell === 0) {
-      this.shellOpen.move(new Point(-8, 8));
+    this.state.startButton.innerText = "Start";
+    const shellCount = `${this.state.winningShell + 1}`;
+    if (this.state.winningShell === 0) {
+      shellOpen.move(new Point(-8, 8));
     } else if (this.state.winningShell === 1) {
-      this.shellOpen.move(new Point(1, 8));
+      shellOpen.move(new Point(1, 8));
     } else {
-      this.shellOpen.move(new Point(10, 8));
+      shellOpen.move(new Point(10, 8));
     }
-    this.shellOpen.show();
+    shellOpen.show();
 
     // Hide shuffling eyes and eyeframes
-    this.gato.shufflingEyeFrame.hide();
-    this.gato.shufflingEyes.hide();
-    if (winningShell === gameState.catSelection) {
-      gameState.numberOfConsecutiveWins++;
-      gameState.numberOfConsecutiveLosses = 0;
-      if (gameState.numberOfConsecutiveWins % 3 === 1) {
-        this.gato.noseMouthDefault.hide();
-        this.gato.showList("noseMouthSnarky innocentEyes shockedEyeFrame");
+    gato.shufflingEyeFrame.hide();
+    gato.shufflingEyes.hide();
+    if (this.state.winningShell === this.state.catSelection) {
+      this.state.numberOfConsecutiveWins++;
+      this.state.numberOfConsecutiveLosses = 0;
+      if (this.state.numberOfConsecutiveWins % 3 === 1) {
+        gato.noseMouthDefault.hide();
+        gato.showList("noseMouthSnarky innocentEyes shockedEyeFrame");
         message(`Shell ${shellCount} has the treat. Gato found it!`);
       } else {
-        this.gato.showList("funkyEyes funkyEyeFrame noseMouthSnarky");
-        this.gato.noseMouthDefault.hide();
+        gato.showList("funkyEyes funkyEyeFrame noseMouthSnarky");
+        gato.noseMouthDefault.hide();
         message(`Shell ${shellCount} has the treat. Gato won again!`);
       }
     } else {
-      gameState.numberOfConsecutiveLosses++;
-      gameState.numberOfConsecutiveWins = 0;
-      if (gameState.numberOfConsecutiveLosses % 3 === 1) {
-        this.gato.funkyEyes.show();
-        this.gato.funkyEyeFrame.show();
+      this.state.numberOfConsecutiveLosses++;
+      this.state.numberOfConsecutiveWins = 0;
+      if (this.state.numberOfConsecutiveLosses % 3 === 1) {
+        gato.funkyEyes.show();
+        gato.funkyEyeFrame.show();
         message(
           `Shell ${shellCount} has the treat. Gato lost and he's pissed!`
         );
-      } else if (gameState.numberOfConsecutiveLosses % 3 === 2) {
-        this.gato.shockedEyes.show();
-        this.gato.shockedEyeFrame.show();
+      } else if (this.state.numberOfConsecutiveLosses % 3 === 2) {
+        gato.shockedEyes.show();
+        gato.shockedEyeFrame.show();
         message(`Shell ${shellCount} has the treat. Gato lost again!`);
       } else {
-        this.gato.shockedEyeFrame.show();
-        this.gato.ultraShockedEyes.show();
+        gato.shockedEyeFrame.show();
+        gato.ultraShockedEyes.show();
         message(
           `Shell ${shellCount} has the treat. Gato is speechless!@#$!@#$!@#!`
         );
@@ -71,7 +63,7 @@ class GameReveal extends GameState {
   }
 
   onEnd() {
-    this.shellOpen.hide();
+    shellOpen.hide();
   }
 
   onUpdate(dt) {
@@ -79,6 +71,6 @@ class GameReveal extends GameState {
   }
 
   nextState() {
-    return "idle";
+    return new GameIdle(this.state);
   }
 }

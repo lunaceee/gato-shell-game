@@ -1,12 +1,9 @@
 "use strict";
 
 class GameShuffling extends GameState {
-  constructor(gato, shells, startButton) {
+  constructor(state) {
     super();
-
-    this.gato = gato;
-    this.shells = shells;
-    this.startButton = startButton;
+    this.state = state;
   }
 
   isDone() {
@@ -18,11 +15,11 @@ class GameShuffling extends GameState {
 
     message("Game on!");
 
-    this.startButton.innerText = "Shuffling";
-    this.startButton.disabled = true;
+    this.state.startButton.innerText = "Shuffling";
+    this.state.startButton.disabled = true;
 
-    this.gato.hide();
-    this.gato.showList(`body
+    gato.hide();
+    gato.showList(`body
     eyeBackground
     tail
     mustache
@@ -40,9 +37,9 @@ class GameShuffling extends GameState {
     // left and right, around which the shells
     // will orbit around when shuffling.
 
-    const p0Shell0 = this.shells[0].p0;
-    const p0Shell1 = this.shells[1].p0;
-    const p0Shell2 = this.shells[2].p0;
+    const p0Shell0 = shells[0].p0;
+    const p0Shell1 = shells[1].p0;
+    const p0Shell2 = shells[2].p0;
 
     const leftCenter = p0Shell0.add(p0Shell1).multiply(0.5);
     const leftRadius = p0Shell0.distance(p0Shell1) * 0.5;
@@ -60,20 +57,20 @@ class GameShuffling extends GameState {
       let posShell0 = orbit(leftCenter, leftRadius, Math.PI + Math.PI * t1);
       let posShell1 = orbit(leftCenter, leftRadius, Math.PI * t1);
 
-      this.shells[0].move(posShell0);
-      this.shells[1].move(posShell1);
-      this.shells[2].move(p0Shell2);
+      shells[0].move(posShell0);
+      shells[1].move(posShell1);
+      shells[2].move(p0Shell2);
     } else {
       let posShell1 = orbit(rightCenter, rightRadius, Math.PI + Math.PI * -t1);
       let posShell2 = orbit(rightCenter, rightRadius, Math.PI * -t1);
 
-      this.shells[0].move(p0Shell0);
-      this.shells[1].move(posShell1);
-      this.shells[2].move(posShell2);
+      shells[0].move(p0Shell0);
+      shells[1].move(posShell1);
+      shells[2].move(posShell2);
     }
   }
 
   nextState() {
-    return "gatoSelects";
+    return new GatoSelects(this.state);
   }
 }
