@@ -7,9 +7,28 @@ class GameIdle extends GameState {
     this.startButton = startButton;
     this.state = {
       startPressed: false,
-      tailDt: -1,
-      eyeX: -1
+      tailDt: -1
     };
+    // Tweener for the tail
+    {
+      const t = new Tweener();
+      const from = -0.5;
+      const to = 0.3;
+      this.tailAngle = t;
+      t.add({ time: 0, value: from });
+      t.add({ time: 1000, value: to, fx: easing.easeInQuad }); // Play w it
+      t.add({ time: 2000, value: from, fx: easing.easeInQuad });
+    }
+    // Tweener for the eyes
+    {
+      const t = new Tweener();
+      t.add({ time: 0, value: -0.5 });
+      t.add({ time: 500, value: 0.5, fx: easing.easeFrom }); // Play w it
+      t.add({ time: 2500, value: 0.5 });
+      t.add({ time: 3000, value: -0.5, fx: easing.easeFrom });
+      t.add({ time: 5000, value: -0.5 });
+      this.eyeMovement = t;
+    }
   }
 
   onStart() {
@@ -44,21 +63,14 @@ class GameIdle extends GameState {
   }
 
   onUpdate(dt) {
-    this.state.eyeX = this.state.eyeX + dt / 1000;
-    if (this.state.eyeX > 1) this.state.eyeX = -1;
-    let k = Math.abs(this.state.eyeX);
-
+    let k = this.eyeMovement.value(this.elapsed % 5000);
     this.gato.eyeLeft.move(new Point(3 + k, 3.6));
     this.gato.eyeRight.move(new Point(7.5 + k, 3.6));
     this.gato.eyeDotsDefaultLeft.move(new Point(3.5 + k, 4.5));
     this.gato.eyeDotsDefaultRight.move(new Point(8.5 + k, 4.5));
 
-    this.state.tailDt = this.state.tailDt + dt / 1000;
-    if (this.state.tailDt > 1) {
-      this.state.tailDt = -1;
-    }
-    let k2 = Math.abs(this.state.tailDt);
-    this.gato.tail.rotate(-0.7 + 1 * k2 * k2); // TODO: make cat tail movement more natural
+    let k2 = this.tailAngle.value(this.elapsed % 2000);
+    this.gato.tail.rotate(k2); // TODO: make cat tail movement more natural
   }
 
   nextState() {
