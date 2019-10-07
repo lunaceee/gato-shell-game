@@ -16,8 +16,8 @@ class GameIdle extends GameState {
       const to = 0.3;
       this.tailAngle = t;
       t.add({ time: 0, value: from });
-      t.add({ time: 1000, value: to, fx: easing.easeInQuad }); // Play w it
-      t.add({ time: 2000, value: from, fx: easing.easeInQuad });
+      t.add({ time: 2000, value: to, fx: easing.easeInOutQuart }); // Play w it
+      t.add({ time: 4000, value: from, fx: easing.easeInOutQuart });
     }
     // Tweener for the eyes
     {
@@ -69,7 +69,7 @@ class GameIdle extends GameState {
     this.gato.eyeDotsDefaultLeft.move(new Point(3.5 + k, 4.5));
     this.gato.eyeDotsDefaultRight.move(new Point(8.5 + k, 4.5));
 
-    let k2 = this.tailAngle.value(this.elapsed % 2000);
+    let k2 = this.tailAngle.value(this.elapsed % 4000);
     this.gato.tail.rotate(k2); // TODO: make cat tail movement more natural
   }
 
