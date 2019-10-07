@@ -1,22 +1,23 @@
 (function(window) {
   "use strict";
   let gameState = {
-    gameShufflingCycle: 0,
     numberOfConsecutiveWins: 0,
     catSelection: null,
-    numberOfConsecutiveLosses: 0
+    numberOfConsecutiveLosses: 0,
+    startPressed: false,
+    startButton: document.querySelector(".start-button")
   };
+
   function stateFactory(name) {
     switch (name) {
       case "idle":
-        return new GameIdle(gato);
+        return new GameIdle(gato, gameState.startButton);
       case "shuffling":
-        return new GameShuffling(gato, shells);
+        return new GameShuffling(gato, shells, gameState.startButton);
       case "gatoSelects":
         gameState.catSelection = Math.floor(Math.random() * 3);
         return new GatoSelects(gato, gameState.catSelection);
       case "reveal":
-        gameState.gameShufflingCycle++;
         return new GameReveal(gato, shellOpen, gameState);
     }
   }
@@ -31,8 +32,7 @@
     }
   }
 
-  const startButton = document.querySelector(".start-button");
-  startButton.addEventListener("click", e => {
+  gameState.startButton.addEventListener("click", e => {
     currentState.onInput({ startPressed: true });
   });
 

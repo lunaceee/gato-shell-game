@@ -1,11 +1,12 @@
 "use strict";
 
 class GameShuffling extends GameState {
-  constructor(gato, shells) {
+  constructor(gato, shells, startButton) {
     super();
 
     this.gato = gato;
     this.shells = shells;
+    this.startButton = startButton;
   }
 
   isDone() {
@@ -16,6 +17,9 @@ class GameShuffling extends GameState {
     console.log("switched to shuffling");
 
     message("Game on!");
+
+    this.startButton.innerText = "Shuffling";
+    this.startButton.disabled = true;
 
     this.gato.hide();
     this.gato.showList(`body

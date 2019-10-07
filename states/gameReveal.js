@@ -15,11 +15,13 @@ class GameReveal extends GameState {
   }
 
   isDone() {
+    this.state.gameState.startPressed = false;
     return this.elapsed > 2000;
   }
 
   onStart() {
     let { winningShell, gameState } = this.state;
+    gameState.startButton.innerText = "Start";
     const shellCount = `${winningShell + 1}`;
     if (winningShell === 0) {
       this.shellOpen.move(new Point(-8, 8));

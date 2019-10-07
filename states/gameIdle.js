@@ -1,9 +1,10 @@
 "use strict";
 
 class GameIdle extends GameState {
-  constructor(gato) {
+  constructor(gato, startButton) {
     super();
     this.gato = gato;
+    this.startButton = startButton;
     this.state = {
       startPressed: false,
       tailDt: -1,
@@ -14,6 +15,8 @@ class GameIdle extends GameState {
   onStart() {
     console.log("switched to idling");
     message("Gato is bored and ready to play");
+    this.startButton.innerText = "Start";
+    this.startButton.disabled = false;
     this.gato.hide();
     this.gato.showList(`
       eyeBackground
