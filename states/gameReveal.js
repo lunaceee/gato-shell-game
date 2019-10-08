@@ -32,7 +32,7 @@ class GameReveal extends GameState {
       this.state.numberOfConsecutiveLosses = 0;
       if (this.state.numberOfConsecutiveWins % 3 === 1) {
         gato.noseMouthDefault.hide();
-        gato.showList("noseMouthSnarky innocentEyes shockedEyeFrame");
+        gato.showList("noseMouthSnarky innocentEyes shufflingEyeFrame");
         message(`Shell ${shellCount} has the treat. Gato found it!`);
       } else {
         gato.showList("funkyEyes funkyEyeFrame noseMouthSnarky");

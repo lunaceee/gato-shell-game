@@ -63,8 +63,8 @@ class GameIdle extends GameState {
     let k = this.eyeMovement.value(this.elapsed % 5000);
     gato.eyeLeft.move(new Point(3 + k, 3.6));
     gato.eyeRight.move(new Point(7.5 + k, 3.6));
-    gato.eyeDotsDefaultLeft.move(new Point(3.5 + k, 4.5));
-    gato.eyeDotsDefaultRight.move(new Point(8.5 + k, 4.5));
+    gato.eyeDotsDefaultLeft.move(new Point(4 + k, 4.5));
+    gato.eyeDotsDefaultRight.move(new Point(9 + k, 4.5));
 
     let k2 = this.tailAngle.value(this.elapsed % 4000);
     gato.tail.rotate(k2); // TODO: make cat tail movement more natural
