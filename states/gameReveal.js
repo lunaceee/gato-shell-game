@@ -8,12 +8,12 @@ class GameReveal extends GameState {
   }
 
   isDone() {
-    this.state.startPressed = false;
     return this.elapsed > 2000;
   }
 
   onStart() {
     this.state.startButton.innerText = "Start";
+
     const shellCount = `${this.state.winningShell + 1}`;
 
     if (this.state.winningShell === 0) {
@@ -25,12 +25,13 @@ class GameReveal extends GameState {
     }
     shells.shellOpen.show();
 
-    // Hide shuffling eyes and eyeframes
     gato.shufflingEyeFrame.hide();
     gato.shufflingEyes.hide();
+
     if (this.state.winningShell === this.state.catSelection) {
       this.state.numberOfConsecutiveWins++;
       this.state.numberOfConsecutiveLosses = 0;
+
       if (this.state.numberOfConsecutiveWins % 3 === 1) {
         gato.noseMouthDefault.hide();
         gato.showList("noseMouthSnarky innocentEyes shufflingEyeFrame");
@@ -43,6 +44,7 @@ class GameReveal extends GameState {
     } else {
       this.state.numberOfConsecutiveLosses++;
       this.state.numberOfConsecutiveWins = 0;
+
       if (this.state.numberOfConsecutiveLosses % 3 === 1) {
         gato.funkyEyes.show();
         gato.funkyEyeFrame.show();
@@ -67,9 +69,7 @@ class GameReveal extends GameState {
     shells.shellOpen.hide();
   }
 
-  onUpdate(dt) {
-    // TODO: stop tail;; this.state.tailDt = -1.2;
-  }
+  onUpdate(dt) {}
 
   nextState() {
     return new GameIdle(this.state);

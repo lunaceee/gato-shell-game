@@ -75,4 +75,9 @@ class SpriteGroup {
       if (sprite) sprite.show();
     }
   }
+
+  showOnly(stringList) {
+    this.hide();
+    this.showList(stringList);
+  }
 }

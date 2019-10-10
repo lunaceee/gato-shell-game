@@ -9,21 +9,16 @@ class GameShuffling extends GameState {
     const d = this.duration;
     const fx = easing.easeInOutQuad;
 
-    {
-      const t = new Tweener();
-      t.add({ time: 0, value: 0 }); // 0 is left branch, 1 is right branch
-      t.add({ time: d / 2, value: 0 });
-      t.add({ time: d / 2, value: 1 });
-      t.add({ time: d, value: 1 });
-      this.side = t;
-    }
-    {
-      const t = new Tweener();
-      t.add({ time: (0 / 2) * d, value: 0 });
-      t.add({ time: (1 / 2) * d, value: Math.PI, fx });
-      t.add({ time: (2 / 2) * d, value: 0, fx });
-      this.angle = t;
-    }
+    this.side = new Tweener();
+    this.side.add({ time: 0, value: 0 }); // 0 is left branch, 1 is right branch
+    this.side.add({ time: d / 2, value: 0 });
+    this.side.add({ time: d / 2, value: 1 });
+    this.side.add({ time: d, value: 1 });
+
+    this.angle = new Tweener();
+    this.angle.add({ time: (0 / 2) * d, value: 0 });
+    this.angle.add({ time: (1 / 2) * d, value: Math.PI, fx });
+    this.angle.add({ time: (2 / 2) * d, value: 0, fx });
   }
 
   isDone() {
@@ -31,8 +26,6 @@ class GameShuffling extends GameState {
   }
 
   onStart() {
-    console.log("switched to shuffling");
-
     message("Game on!");
 
     this.state.startButton.innerText = "Shuffling";
@@ -54,6 +47,7 @@ class GameShuffling extends GameState {
   onUpdate(dt) {
     const leftSide = this.side.value(this.elapsed % this.duration) === 0;
     const angle = this.angle.value(this.elapsed % this.duration);
+
     const { center1, center2, radius } = shellData;
 
     if (leftSide) {

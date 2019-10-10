@@ -56,9 +56,8 @@ class GameState {
   }
 
   /**
-   * Returns the name of the preferred next state.
-   * May return empty string of there is no preferred
-   * next state.
+   * Returns the next state, used by the game loop when
+   * the current state `isDone()`.
    */
   nextState() {
     return "";
