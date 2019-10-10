@@ -1,6 +1,13 @@
 "use strict";
+import GameState from "../util/gameState";
+import Tweener from "../util/tweener";
+import { easing } from "../util/easing";
+import { message } from "../util/message";
+import { gato } from "../sprites/gato";
+import Point from "../util/point";
+import GameShuffling from "./gameShuffling";
 
-class GameIdle extends GameState {
+export default class GameIdle extends GameState {
   constructor(gameState) {
     super();
     this.state = gameState;

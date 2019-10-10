@@ -1,0 +1,16 @@
+{
+  "name": "gato-shell-game",
+  "version": "1.0.0",
+  "description": "A silly SVG animation game powered by vanilla JavaScript, HTML and CSS",
+  "repository": "git@github.com:lunaceee/gato-shell-game.git",
+  "author": "lunaceee <lunaceee@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "npx webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  }
+}

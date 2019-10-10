@@ -2,6 +2,6 @@
 
 const gatoStatus = document.querySelector(".status");
 
-function message(str) {
+export function message(str) {
   gatoStatus.innerText = str;
 }

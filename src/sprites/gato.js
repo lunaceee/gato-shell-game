@@ -1,4 +1,5 @@
 "use strict";
+import SpriteGroup from "../util/spriteGroup";
 
 let gato = new SpriteGroup();
 
@@ -29,3 +30,5 @@ gato.add(".legs-right", 3.7, 13);
 gato.add(".mustache", -1, 7.5);
 gato.add(".nose-mouth-default", 6.5, 8);
 gato.add(".nose-mouth-snarky", 6.5, 8);
+
+export { gato };

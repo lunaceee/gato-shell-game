@@ -1,5 +1,9 @@
 "use strict";
-class GatoSelects extends GameState {
+import GameState from "../util/gameState";
+import GameReveal from "./gameReveal";
+import { gato } from "../sprites/gato";
+
+export default class GatoSelects extends GameState {
   constructor(state) {
     super();
     this.state = state;

@@ -4,7 +4,7 @@ function clamp(value, min, max) {
   return value;
 }
 
-class Tweener {
+export default class Tweener {
   constructor() {
     this.values = [];
   }

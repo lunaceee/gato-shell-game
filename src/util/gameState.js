@@ -1,6 +1,6 @@
 "use strict";
 
-class GameState {
+export default class GameState {
   constructor() {
     this.initialized = false;
     this.elapsed = 0;

@@ -1,6 +1,14 @@
 "use strict";
+import GameState from "../util/gameState";
+import Tweener from "../util/tweener";
+import { message } from "../util/message";
+import { gato } from "../sprites/gato";
+import { easing } from "../util/easing";
+import { shellData, shells } from "../sprites/shells";
+import { orbit } from "../util/orbit";
+import GatoSelects from "./gatoSelects";
 
-class GameShuffling extends GameState {
+export default class GameShuffling extends GameState {
   constructor(state) {
     super();
     this.state = state;

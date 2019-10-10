@@ -1,4 +1,6 @@
 "use strict";
+import Point from "../util/point";
+import SpriteGroup from "../util/spriteGroup";
 
 const shellData = {};
 {
@@ -20,3 +22,5 @@ shells.add(".shell-1", shellData.shell1P0.x, shellData.shell1P0.y);
 shells.add(".shell-2", shellData.shell2P0.x, shellData.shell2P0.y);
 shells.add(".shell-3", shellData.shell3P0.x, shellData.shell3P0.y);
 shells.add(".shell-open", 0, 0);
+
+export { shells, shellData };

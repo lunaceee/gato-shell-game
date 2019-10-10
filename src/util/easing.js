@@ -194,3 +194,5 @@ const easing = {
     return Math.pow(pos, 0.25);
   }
 };
+
+export { easing };

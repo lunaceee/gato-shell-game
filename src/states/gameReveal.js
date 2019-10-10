@@ -1,6 +1,12 @@
 "use strict";
 
-class GameReveal extends GameState {
+import GameState from "../util/gameState";
+import GameIdle from "./gameIdle";
+import { shells, shellData } from "../sprites/shells";
+import { gato } from "../sprites/gato";
+import { message } from "../util/message";
+
+export default class GameReveal extends GameState {
   constructor(state) {
     super();
     this.state = state;
