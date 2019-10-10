@@ -1,8 +1,8 @@
-// TODO: convert to a SpriteGroup.
-let shells = [
-  new Sprite(".shell-1", new Point(-8, 8)),
-  new Sprite(".shell-2", new Point(1, 8)),
-  new Sprite(".shell-3", new Point(10, 8))
-];
+"use strict";
 
-let shellOpen = new Sprite(".shell-open", new Point(1, 8));
+let shells = new SpriteGroup();
+
+shells.add(".shell-1", -8, 8);
+shells.add(".shell-2", 1, 8);
+shells.add(".shell-3", 10, 8);
+shells.add(".shell-open", 1, 8);

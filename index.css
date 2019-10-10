@@ -36,6 +36,7 @@ svg {
   height: 10rem;
   font-size: 2.8rem;
   padding: 0 2rem;
+  max-width: 20rem;
 }
 
 .start-button {

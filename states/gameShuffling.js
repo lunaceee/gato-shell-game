@@ -37,9 +37,9 @@ class GameShuffling extends GameState {
     // left and right, around which the shells
     // will orbit around when shuffling.
 
-    const p0Shell0 = shells[0].p0;
-    const p0Shell1 = shells[1].p0;
-    const p0Shell2 = shells[2].p0;
+    const p0Shell0 = shells.shell1.p0;
+    const p0Shell1 = shells.shell2.p0;
+    const p0Shell2 = shells.shell3.p0;
 
     const leftCenter = p0Shell0.add(p0Shell1).multiply(0.5);
     const leftRadius = p0Shell0.distance(p0Shell1) * 0.5;
@@ -57,16 +57,16 @@ class GameShuffling extends GameState {
       let posShell0 = orbit(leftCenter, leftRadius, Math.PI + Math.PI * t1);
       let posShell1 = orbit(leftCenter, leftRadius, Math.PI * t1);
 
-      shells[0].move(posShell0);
-      shells[1].move(posShell1);
-      shells[2].move(p0Shell2);
+      shells.shell1.move(posShell0);
+      shells.shell2.move(posShell1);
+      shells.shell3.move(p0Shell2);
     } else {
       let posShell1 = orbit(rightCenter, rightRadius, Math.PI + Math.PI * -t1);
       let posShell2 = orbit(rightCenter, rightRadius, Math.PI * -t1);
 
-      shells[0].move(p0Shell0);
-      shells[1].move(posShell1);
-      shells[2].move(posShell2);
+      shells.shell1.move(p0Shell0);
+      shells.shell2.move(posShell1);
+      shells.shell3.move(posShell2);
     }
   }
 

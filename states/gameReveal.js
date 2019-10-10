@@ -16,13 +16,13 @@ class GameReveal extends GameState {
     this.state.startButton.innerText = "Start";
     const shellCount = `${this.state.winningShell + 1}`;
     if (this.state.winningShell === 0) {
-      shellOpen.move(new Point(-8, 8));
+      shells.shellOpen.move(new Point(-8, 8));
     } else if (this.state.winningShell === 1) {
-      shellOpen.move(new Point(1, 8));
+      shells.shellOpen.move(new Point(1, 8));
     } else {
-      shellOpen.move(new Point(10, 8));
+      shells.shellOpen.move(new Point(10, 8));
     }
-    shellOpen.show();
+    shells.shellOpen.show();
 
     // Hide shuffling eyes and eyeframes
     gato.shufflingEyeFrame.hide();
@@ -63,7 +63,7 @@ class GameReveal extends GameState {
   }
 
   onEnd() {
-    shellOpen.hide();
+    shells.shellOpen.hide();
   }
 
   onUpdate(dt) {
