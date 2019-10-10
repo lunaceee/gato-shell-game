@@ -5,4 +5,4 @@ let shells = [
   new Sprite(".shell-3", new Point(10, 8))
 ];
 
-let shellOpen = new Sprite(".shell-open", new Point(0, 0));
+let shellOpen = new Sprite(".shell-open", new Point(1, 8));
