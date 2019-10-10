@@ -15,12 +15,13 @@ class GameReveal extends GameState {
   onStart() {
     this.state.startButton.innerText = "Start";
     const shellCount = `${this.state.winningShell + 1}`;
+
     if (this.state.winningShell === 0) {
-      shells.shellOpen.move(new Point(-8, 8));
+      shells.shellOpen.move(shellData.shell1P0);
     } else if (this.state.winningShell === 1) {
-      shells.shellOpen.move(new Point(1, 8));
+      shells.shellOpen.move(shellData.shell1P0);
     } else {
-      shells.shellOpen.move(new Point(10, 8));
+      shells.shellOpen.move(shellData.shell1P0);
     }
     shells.shellOpen.show();
 

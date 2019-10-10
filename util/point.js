@@ -27,4 +27,8 @@ class Point {
     const dy = a.y - b.y;
     return Math.hypot(dx, dy);
   }
+
+  toString() {
+    return `(${this.x}, ${this.y})`;
+  }
 }
