@@ -1,9 +1,11 @@
 "use strict";
 
 import SpriteGroup from "../util/spriteGroup";
-import {message} from "../util/message";
+import { message } from "../util/message";
 
-let gato = new SpriteGroup();
+const gato = new SpriteGroup();
+
+export { gato };
 
 gato.add(".body", 0, 0);
 gato.add(".default-eye-frame", 2, 3);
@@ -33,33 +35,30 @@ gato.add(".mustache", -1, 7.5);
 gato.add(".nose-mouth-default", 6.5, 8);
 gato.add(".nose-mouth-snarky", 6.5, 8);
 
-export { gato };
-
 export function gatoSnarky(winner) {
     gato.noseMouthDefault.hide();
     gato.showList("noseMouthSnarky innocentEyes shufflingEyeFrame");
-    message(`Shell ${winner} has the treat. Gato found it!`);
+    message(`Treat is under shell ${winner}. Gato won and he is unstoppable!`);
 }
 
 export function gatoHappy(winner) {
     gato.noseMouthDefault.hide();
     gato.showList("funkyEyes funkyEyeFrame noseMouthSnarky");
-    message(`Shell ${winner} has the treat. Gato won again!`);
+    message(`Treat is under shell ${winner}. Gato found it!`);
 }
 
 export function gatoPissed(winner) {
     gato.showList(`funkyEyes funkyEyeFrame`);
-    message(
-        `Shell ${winner} has the treat. Gato lost and he's pissed!`);
+    message(`Treat is under shell ${winner}. Gato lost and he is pissed!`);
 }
 
 export function gatoShocked(winner) {
     gato.showList(`shockedEyes shockedEyeFrame`);
-    message(`Shell ${winner} has the treat. Gato lost again!`);
+    message(`Treat is under shell ${winner}. Gato lost again?!`);
 }
 
 export function gatoSpeechless(winner) {
     gato.showList(`shockedEyeFrame ultraShockedEyes`);
-    message(
-        `Shell ${winner} has the treat. Gato is speechless!@#$!@#$!@#!`);
+    message(`Treat is under shell ${winner}. ` +
+        `Gato lost and he is speechless! @#$!@#$!@#!`);
 }
