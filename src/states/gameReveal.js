@@ -41,11 +41,13 @@ export default class GameReveal extends GameState {
       if (this.state.numberOfConsecutiveWins % 3 === 1) {
         gato.noseMouthDefault.hide();
         gato.showList("noseMouthSnarky innocentEyes shufflingEyeFrame");
-        message(`Shell ${shellCount} has the treat. Gato found it!`);
+        message(`Treat is under shell ${shellCount}. Gato found it!`);
       } else {
         gato.showList("funkyEyes funkyEyeFrame noseMouthSnarky");
         gato.noseMouthDefault.hide();
-        message(`Shell ${shellCount} has the treat. Gato won again!`);
+        message(
+          `Treat is under shell ${shellCount}. Gato won and he is unstoppable!`
+        );
       }
     } else {
       this.state.numberOfConsecutiveLosses++;
@@ -55,18 +57,18 @@ export default class GameReveal extends GameState {
         gato.funkyEyes.show();
         gato.funkyEyeFrame.show();
         message(
-          `Shell ${shellCount} has the treat. Gato lost and he's pissed!`
+          `Treat is under shell ${shellCount}. Gato lost and he is pissed!`
         );
       } else if (this.state.numberOfConsecutiveLosses % 3 === 2) {
         gato.shockedEyes.show();
         gato.shockedEyeFrame.show();
-        message(`Shell ${shellCount} has the treat. Gato lost again!`);
+        message(`Treat is under shell ${shellCount}. Gato lost again?!`);
       } else {
         gato.shockedEyeFrame.show();
         gato.ultraShockedEyes.show();
         message(
-          `Shell ${shellCount} has the treat. 
-          Gato is speechless!@#$!@#$!@#!`
+          `Treat is under shell ${shellCount}. 
+          Gato lost and he is speechless!@#$!@#$!@#!`
         );
       }
     }
