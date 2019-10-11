@@ -17,7 +17,6 @@ export default class GameReveal extends GameState {
   }
 
   onStart() {
-
     this.state.startButton.innerText = "Start";
 
     shells.shellOpen.move(shellData[this.state.winningShell]);
@@ -28,20 +27,19 @@ export default class GameReveal extends GameState {
 
     const winner = `${this.state.winningShell + 1}`;
     const catWon = this.state.winningShell === this.state.catSelection;
-    const tally = this.state.tally;
-    tally.push(catWon ? 'w' : 'l');
+    const tally = this.state.tally = `${this.state.tally}${catWon ? 'w' : 'l'}`;
 
-    if (tally.matches('www')) {
+    if (tally.match(/www$/)) {
       gatoSnarky(winner);
-    } else if (tally.matches('ww')) {
+    } else if (tally.match(/ww$/)) {
       gatoHappy(winner);
-    } else if (tally.matches('w')) {
+    } else if (tally.match(/w$/)) {
       gatoHappy(winner);
-    } else if (tally.matches('lll')) {
+    } else if (tally.match(/lll$/)) {
       gatoPissed(winner);
-    } else if (tally.matches('ll')) {
+    } else if (tally.match(/ll$/)) {
       gatoShocked(winner);
-    } else if (tally.matches('l')) {
+    } else if (tally.match(/l$/)) {
       gatoSpeechless(winner);
     }
   }
