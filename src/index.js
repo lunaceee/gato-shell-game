@@ -1,9 +1,8 @@
 "use strict";
 import GameIdle from "./states/gameIdle";
-import Tally from "./util/tally";
 
 let gameState = {
-  tally: new Tally(),
+  tally: '',
   startButton: document.querySelector(".start-button")
 };
 
