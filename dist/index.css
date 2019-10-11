@@ -130,6 +130,7 @@ button:disabled {
 
   .status {
     height: 26rem;
-    max-width: 20rem;
+    max-width: 16rem;
+    word-wrap: break-word;
   }
 }
