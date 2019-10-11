@@ -25,9 +25,9 @@ export default class GameReveal extends GameState {
     if (this.state.winningShell === 0) {
       shells.shellOpen.move(shellData.shell1P0);
     } else if (this.state.winningShell === 1) {
-      shells.shellOpen.move(shellData.shell1P0);
+      shells.shellOpen.move(shellData.shell2P0);
     } else {
-      shells.shellOpen.move(shellData.shell1P0);
+      shells.shellOpen.move(shellData.shell3P0);
     }
     shells.shellOpen.show();
 
@@ -65,7 +65,8 @@ export default class GameReveal extends GameState {
         gato.shockedEyeFrame.show();
         gato.ultraShockedEyes.show();
         message(
-          `Shell ${shellCount} has the treat. Gato is speechless!@#$!@#$!@#!`
+          `Shell ${shellCount} has the treat. 
+          Gato is speechless!@#$!@#$!@#!`
         );
       }
     }
