@@ -2,16 +2,12 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c19d57e1-1151-486c-9df1-1754d36f6ecd/deploy-status)](https://app.netlify.com/sites/gato-shell-game/deploys)
 
-<img class="center" src="./dist/images/gato-demo.gif" alt="gato demo" />
+<p align="center">
+ <img src="./dist/images/gato-demo.gif" />
+</p>
 
-Gato is a little animation game using SVG and vanilla JavaScript.
-It is my first attempt of [Affinity designer](https://affinity.serif.com/en-us/) and SVG animations without any front-end frameworks. Inspired by the infinite random cat gifs on the web.
-
-## Install
-
-```
-yarn install
-```
+Gato is a light weight game using SVG and vanilla JavaScript.
+It is my first attempt of [Affinity designer](https://affinity.serif.com/en-us/) and SVG animations without any front-end frameworks, inspired by the cute random cat gifs from the web.
 
 ## Test
 
