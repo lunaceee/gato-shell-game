@@ -1,6 +1,6 @@
 "use strict";
 
-class Point {
+export default class Point {
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -26,5 +26,9 @@ class Point {
     const dx = a.x - b.x;
     const dy = a.y - b.y;
     return Math.hypot(dx, dy);
+  }
+
+  toString() {
+    return `(${this.x}, ${this.y})`;
   }
 }

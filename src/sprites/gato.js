@@ -1,4 +1,5 @@
 "use strict";
+import SpriteGroup from "../util/spriteGroup";
 
 let gato = new SpriteGroup();
 
@@ -14,12 +15,12 @@ gato.add(".shuffling-eye-frame", 2, 3);
 gato.add(".shuffling-eyes", 3.9, 4.2);
 
 gato.add(".funky-eye-frame", 2, 3);
-gato.add(".funky-eyes", 3.6, 4.2);
+gato.add(".funky-eyes", 3.6, 4.1);
 
 gato.add(".shocked-eye-frame", 2, 3);
-gato.add(".innocent-eyes", 3.6, 3.8);
-gato.add(".shocked-eyes", 4.2, 4.3);
-gato.add(".ultra-shocked-eyes", 4.6, 4.2);
+gato.add(".innocent-eyes", 3.3, 3.5);
+gato.add(".shocked-eyes", 3.7, 4.2);
+gato.add(".ultra-shocked-eyes", 3.8, 4.2);
 
 gato.add(".tail", 9, 9);
 gato.add(".legs-center", 4, 13);
@@ -29,3 +30,5 @@ gato.add(".legs-right", 3.7, 13);
 gato.add(".mustache", -1, 7.5);
 gato.add(".nose-mouth-default", 6.5, 8);
 gato.add(".nose-mouth-snarky", 6.5, 8);
+
+export { gato };

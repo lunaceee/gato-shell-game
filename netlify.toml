@@ -1,0 +1,11 @@
+[build]
+  command = "yarn build"
+  publish = "dist"
+
+[context.deploy-preview.environment]
+  command = "yarn build"
+  publish = "dist"
+
+[context.branch-deploy]
+  command = "yarn build"
+  publish = "dist"

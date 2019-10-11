@@ -1,5 +1,6 @@
 "use strict";
-class Sprite {
+
+export default class Sprite {
   constructor(cssSelector, p0, size) {
     this.cssSelector = cssSelector;
     this.element = document.querySelector(cssSelector);
@@ -39,41 +40,5 @@ class Sprite {
   move(pos) {
     this.element.style.left = `${pos.x}rem`;
     this.element.style.top = `${pos.y}rem`;
-  }
-}
-
-class SpriteGroup {
-  constructor() {
-    this.keys = [];
-  }
-
-  /**
-   * Converted class names into gato parts
-   * @param {} cssClass
-   * @param {*} x
-   * @param {*} y
-   */
-  add(cssClass, x, y) {
-    const key = camelize(cssClass.replace(".", "").split("-"));
-    this.keys.push(key);
-    this[key] = new Sprite(cssClass, new Point(x, y));
-  }
-
-  /**
-   * Hides all the sprites on the SpriteGroup
-   */
-  hide() {
-    for (const key of this.keys) {
-      this[key].hide();
-    }
-  }
-
-  showList(spaceSeparatedNames) {
-    for (let name of spaceSeparatedNames.split(new RegExp("\n|\\s+"))) {
-      const sprite = this[name];
-      console.log(name);
-
-      if (sprite) sprite.show();
-    }
   }
 }

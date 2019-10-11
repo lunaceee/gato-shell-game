@@ -1,6 +1,6 @@
 "use strict";
 
-class GameState {
+export default class GameState {
   constructor() {
     this.initialized = false;
     this.elapsed = 0;
@@ -56,9 +56,8 @@ class GameState {
   }
 
   /**
-   * Returns the name of the preferred next state.
-   * May return empty string of there is no preferred
-   * next state.
+   * Returns the next state, used by the game loop when
+   * the current state `isDone()`.
    */
   nextState() {
     return "";
