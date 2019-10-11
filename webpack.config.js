@@ -7,8 +7,9 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   },
   devServer: {
-    contentBase: "./dist",
-    hot: true
+    contentBase: path.join(__dirname, "dist"),
+    hot: true,
+    port: 5000
   },
-  mode: "production"
+  mode: "development"
 };
