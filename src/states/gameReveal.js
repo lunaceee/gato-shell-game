@@ -3,8 +3,14 @@
 import GameState from "../util/gameState";
 import GameIdle from "./gameIdle";
 import { shells, shellData } from "../sprites/shells";
-import { gato } from "../sprites/gato";
-import { message } from "../util/message";
+import {
+  gato,
+  gatoHappy,
+  gatoPissed,
+  gatoShocked,
+  gatoSnarky,
+  gatoSpeechless
+} from "../sprites/gato";
 
 export default class GameReveal extends GameState {
   constructor(state) {
@@ -19,8 +25,6 @@ export default class GameReveal extends GameState {
 
   onStart() {
     this.state.startButton.innerText = "Start";
-
-    const shellCount = `${this.state.winningShell + 1}`;
 
     if (this.state.winningShell === 0) {
       shells.shellOpen.move(shellData.shell1P0);

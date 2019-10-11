@@ -1,9 +1,9 @@
 "use strict";
 import GameIdle from "./states/gameIdle";
+import Tally from "./util/tally";
 
 let gameState = {
-  numberOfConsecutiveWins: 0,
-  numberOfConsecutiveLosses: 0,
+  tally: new Tally(),
   startButton: document.querySelector(".start-button")
 };
 

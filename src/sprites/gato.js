@@ -1,5 +1,7 @@
 "use strict";
+
 import SpriteGroup from "../util/spriteGroup";
+import {message} from "../util/message";
 
 let gato = new SpriteGroup();
 
@@ -32,3 +34,32 @@ gato.add(".nose-mouth-default", 6.5, 8);
 gato.add(".nose-mouth-snarky", 6.5, 8);
 
 export { gato };
+
+export function gatoSnarky(winner) {
+    gato.noseMouthDefault.hide();
+    gato.showList("noseMouthSnarky innocentEyes shufflingEyeFrame");
+    message(`Shell ${winner} has the treat. Gato found it!`);
+}
+
+export function gatoHappy(winner) {
+    gato.noseMouthDefault.hide();
+    gato.showList("funkyEyes funkyEyeFrame noseMouthSnarky");
+    message(`Shell ${winner} has the treat. Gato won again!`);
+}
+
+export function gatoPissed(winner) {
+    gato.showList(`funkyEyes funkyEyeFrame`);
+    message(
+        `Shell ${winner} has the treat. Gato lost and he's pissed!`);
+}
+
+export function gatoShocked(winner) {
+    gato.showList(`shockedEyes shockedEyeFrame`);
+    message(`Shell ${winner} has the treat. Gato lost again!`);
+}
+
+export function gatoSpeechless(winner) {
+    gato.showList(`shockedEyeFrame ultraShockedEyes`);
+    message(
+        `Shell ${winner} has the treat. Gato is speechless!@#$!@#$!@#!`);
+}
