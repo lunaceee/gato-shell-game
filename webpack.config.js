@@ -6,5 +6,10 @@ module.exports = {
     filename: "index.js",
     path: path.resolve(__dirname, "dist")
   },
-  mode: "production"
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    hot: true,
+    port: 5000
+  },
+  mode: "development"
 };
