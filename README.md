@@ -4,7 +4,7 @@
 
 <p align="center">
  <img src="./dist/images/gato-demo.gif" />
- <a href="https://gato-shell-game.netlify.com/">Live demo</a>
+ <a href="https://gato-shell-game.netlify.com/"><h3>Live demo</h3></a>
 </p>
 
 Gato is a light weight game using SVG and vanilla JavaScript.
