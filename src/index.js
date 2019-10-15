@@ -2,7 +2,8 @@
 import GameIdle from "./states/gameIdle";
 
 let gameState = {
-  tally: '',
+  numberOfConsecutiveWins: 0,
+  numberOfConsecutiveLosses: 0,
   startButton: document.querySelector(".start-button")
 };
 
