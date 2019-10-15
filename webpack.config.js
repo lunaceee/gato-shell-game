@@ -8,7 +8,6 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    hot: true,
     port: 5000
   },
   mode: "production"
