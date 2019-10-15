@@ -11,5 +11,5 @@ module.exports = {
     hot: true,
     port: 5000
   },
-  mode: "development"
+  mode: "production"
 };
