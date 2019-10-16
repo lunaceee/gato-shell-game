@@ -9,6 +9,7 @@ import GameShuffling from "./gameShuffling";
 
 export default class GameIdle extends GameState {
   constructor(gameState) {
+    console.log("dd");
     super();
     this.state = gameState;
 

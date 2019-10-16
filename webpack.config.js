@@ -8,8 +8,9 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    hot: true,
-    port: 5000
+    port: 5000,
+    liveReload: true,
+    watchContentBase: true
   },
-  mode: "production"
+  mode: "development"
 };

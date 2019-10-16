@@ -35,30 +35,29 @@ gato.add(".mustache", -1, 7.5);
 gato.add(".nose-mouth-default", 6.5, 8);
 gato.add(".nose-mouth-snarky", 6.5, 8);
 
-export function gatoSnarky(winner) {
-    gato.noseMouthDefault.hide();
+export function gatoWins(winner, numberOfWins) {
+  if (numberOfWins === 1) {
     gato.showList("noseMouthSnarky innocentEyes shufflingEyeFrame");
-    message(`Treat is under shell ${winner}. Gato won and he is unstoppable!`);
-}
-
-export function gatoHappy(winner) {
+    message(`Treat is under shell ${winner}. Gato won!`);
+  } else if (numberOfWins > 1) {
     gato.noseMouthDefault.hide();
-    gato.showList("funkyEyes funkyEyeFrame noseMouthSnarky");
-    message(`Treat is under shell ${winner}. Gato found it!`);
+    gato.showList("noseMouthSnarky funkyEyes funkyEyeFrame");
+    message(`Treat is under shell ${winner}. Gato won and he is unstoppable!`);
+  }
 }
 
-export function gatoPissed(winner) {
+export function gatoLost(winner, numberOfLost) {
+  if (numberOfLost === 1) {
     gato.showList(`funkyEyes funkyEyeFrame`);
     message(`Treat is under shell ${winner}. Gato lost and he is pissed!`);
-}
-
-export function gatoShocked(winner) {
+  } else if (numberOfLost === 2) {
     gato.showList(`shockedEyes shockedEyeFrame`);
     message(`Treat is under shell ${winner}. Gato lost again?!`);
-}
-
-export function gatoSpeechless(winner) {
+  } else if (numberOfLost === 3) {
     gato.showList(`shockedEyeFrame ultraShockedEyes`);
-    message(`Treat is under shell ${winner}. ` +
-        `Gato lost and he is speechless! @#$!@#$!@#!`);
+    message(
+      `Treat is under shell ${winner}. ` +
+        `Gato lost and he is speechless! @#$!@#$!@#!`
+    );
+  }
 }
